@@ -3,7 +3,9 @@
     "next/core-web-vitals",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier"
   ],
   "env": {
     "browser": true,
@@ -25,25 +27,37 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "project": "**/tsconfig.json",
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "jsxPragma": null
   },
   "plugins": [
     "@typescript-eslint",
     "react"
   ],
   "rules": {
+    "react/jsx-props-no-spreading": 0,
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-uses-react": 0,
+    "react/prop-types": 0,
+    "import/extensions": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/prefer-default-export": 0,
+    "no-unused-vars":"warn",
     "indent": [
       "error",
-      "tab"
-    ],
-    "linebreak-style": [
-      "error",
-      "windows"
+      2
     ],
     "quotes": [
       "error",
-      "double"
+      "double",
+      {
+        "allowTemplateLiterals": true
+      }
     ],
     "semi": [
       "error",

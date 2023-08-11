@@ -18,11 +18,11 @@ const RootLayout: React.FC<{
     <html lang="en">
       <body>
         <ContextProvider>
-          <TopLoader color="hsl(240 5.9% 10%)" />
+          <TopLoader color="hsl(240, 5.9%, 50%)" showSpinner={false} />
           <Header />
-          <div className="container">
+          <div className="flex gap-2 items-start container min-h-[40rem]">
             <SideMenu />
-            {children}
+            <div className="py-8">{children}</div>
           </div>
         </ContextProvider>
       </body>
