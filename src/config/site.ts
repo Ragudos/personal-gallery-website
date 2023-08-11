@@ -1,7 +1,7 @@
 import { AlbumIcon, GalleryIcon, HeartIcon } from "@/components/icons";
 
 export const siteConfig = {
-  title: "Aaron's Gallery",
+  title: "12StemA7 Gallery",
   sideNav: [
     {
       name: "Gallery",
@@ -12,7 +12,7 @@ export const siteConfig = {
     {
       name: "Albums",
       id: "link-to-albums",
-      href: "/albums",
+      href: "/album",
       icon: AlbumIcon,
     },
     {

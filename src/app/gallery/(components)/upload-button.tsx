@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { CldUploadButton } from "next-cloudinary";
+import { UploadIcon } from "@/components/icons";
 
 // export type UploadResult = {
 
@@ -11,7 +12,10 @@ import { CldUploadButton } from "next-cloudinary";
 export const UploadButton: React.FC = () => {
   return (
     <Button asChild>
-      <CldUploadButton uploadPreset="" />
+      <CldUploadButton className="flex gap-1 items-center" uploadPreset="lx9juehj">
+        <UploadIcon />
+        Upload
+      </CldUploadButton>
     </Button>
   );
 };

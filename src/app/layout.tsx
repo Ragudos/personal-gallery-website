@@ -22,7 +22,7 @@ const RootLayout: React.FC<{
           <Header />
           <div className="flex gap-2 items-start container min-h-[40rem]">
             <SideMenu />
-            <div className="py-8">{children}</div>
+            <div className="py-8 w-full">{children}</div>
           </div>
         </ContextProvider>
       </body>
