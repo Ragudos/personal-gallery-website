@@ -8,7 +8,7 @@ type ImageKeys = {
   filename: string;
 };
 
-type SearchResult = {
+export type SearchResult = {
   resources: ImageKeys[];
   next_cursor: string;
 };
@@ -26,7 +26,7 @@ export const generateSignature = () => {
 export const getImages = async (next_cursor?: string, max: number = 10) => {
   const result = await cloudinary.search
     .expression("resource_type:image AND tags=12stema7")
-    .sort_by("public_id", "desc")
+    .sort_by("public_id", "asc")
     .max_results(max)
     .next_cursor(next_cursor)
     .execute() as SearchResult;

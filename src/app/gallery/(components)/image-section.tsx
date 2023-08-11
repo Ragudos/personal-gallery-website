@@ -4,12 +4,14 @@ import * as React from "react";
 import { CloudinaryImage } from "./image";
 import { getImages } from "@/app/actions/cloudinary";
 
-export const ImageSection: React.FC = async () => {
-  const results = await getImages(undefined, 80);
+export const ImageSection: React.FC<{
+  next_cursor?: string
+}> = async ({ next_cursor }) => {
+  const result = await getImages(next_cursor);
 
   return (
     <React.Fragment>
-      {results.resources.map((img, index) => (
+      {result.resources.map((img, index) => (
         <div key={img.public_id}>
           <CloudinaryImage
             src={img.public_id}
@@ -22,6 +24,13 @@ export const ImageSection: React.FC = async () => {
           />
         </div>
       ))}
+      {result.next_cursor && (
+        <React.Suspense>
+          <ImageSection
+            next_cursor={result.next_cursor}
+          />
+        </React.Suspense>
+      )}
     </React.Fragment>
   );
 };
