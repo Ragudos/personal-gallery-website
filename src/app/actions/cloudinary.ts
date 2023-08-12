@@ -2,7 +2,7 @@
 
 import { v2 as cloudinary } from "cloudinary";
 import { revalidatePath } from "next/cache";
-type ImageKeys = {
+export type ImageKeys = {
   public_id: string;
   width: number;
   height: number;
@@ -48,7 +48,10 @@ export const setAsFavorite = async (
   }
   await new Promise((resolve) => {
     setTimeout(() => {
-      resolve(revalidatePath("/gallery"));
+      resolve((function () {
+        revalidatePath("/gallery");
+        revalidatePath("/favorites");
+      })());
     }, 1000);
   });
 };

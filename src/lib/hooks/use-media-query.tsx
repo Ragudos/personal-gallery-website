@@ -17,9 +17,7 @@ type MediaQuery =
   | "(orientation: landscape)";
 
 export const useMediaQuery = (mediaQuery: MediaQuery) => {
-  const [matches, setMatches] = React.useState(
-    window.matchMedia(mediaQuery).matches ?? false,
-  );
+  const [matches, setMatches] = React.useState(false);
   const didMount = useOnMount();
 
   React.useEffect(() => {

@@ -2,11 +2,11 @@ import * as React from "react";
 import { UploadButton } from "./(components)/upload-button";
 import dynamic from "next/dynamic";
 
-const GalleryImages = dynamic(() => import("./(components)/gallery-images").then((module) => {
-  return module.GalleryImages;
+const ImageSection = dynamic(() => import("./(components)/img-section").then((module) => {
+  return module.ImageSection;
 }));
 
-const GalleryPage: React.FC = () => {
+const FavoritesPage: React.FC = () => {
 
   return (
     <section className="px-8 w-full">
@@ -16,11 +16,11 @@ const GalleryPage: React.FC = () => {
       </div>
       <div className="py-12 grid grid-cols-2 sm:grid-cols-3 gap-4">
         <React.Suspense fallback={<p>Loading images...</p>}>
-          <GalleryImages />
+          <ImageSection />
         </React.Suspense>
       </div>
     </section>
   );
 };
 
-export default GalleryPage;
+export default FavoritesPage;

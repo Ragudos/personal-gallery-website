@@ -19,6 +19,7 @@ type CloudinaryImageProps = {
   fetchPriority?: "low" | "high" | "auto";
   priority?: boolean;
   tags: string[];
+  onUnHeart: (resourceId: string) => void;
 };
 
 export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
@@ -29,7 +30,8 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
   loading = "lazy",
   fetchPriority = "auto",
   priority = false,
-  tags
+  tags,
+  onUnHeart
 }) => {
   const [isLoading, setIsLoading] = React.useState(true);
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
@@ -82,15 +84,22 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
                       toast({
                         title: "Success!"
                       });
-                    } catch (error) {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    } catch (error: any) {
                       console.error(error);
+                      toast({
+                        title: "Something went wrong",
+                        description: error.message
+                      });
+                      setIsFavorite((prev) => (!prev));
                     }
                     router.refresh();
+                    onUnHeart(publicId);
                   });
                 }
               }}
             >
-              <HeartIcon className={`group-hover:fill-red-500/80 group-hover:stroke-red-500/80${isFavorite ? " fill-red-500 stroke-red-500" : " stroke-red-700"} group-active:fill-red-500/60 group-active:stroke-red-500/60`} />
+              <HeartIcon className={`group-hover:fill-red-500/80 group-hover:stroke-red-500/80${isFavorite ? " fill-red-500 stroke-red-500" : ""} group-active:fill-red-500/60 group-active:stroke-red-500/60`} />
             </Button>
           </div>
           <CldImage
