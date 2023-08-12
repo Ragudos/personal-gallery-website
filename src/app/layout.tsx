@@ -15,7 +15,7 @@ const RootLayout: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         <ContextProvider>
           <TopLoader color="hsl(240, 5.9%, 50%)" showSpinner={false} />

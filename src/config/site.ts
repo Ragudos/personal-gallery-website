@@ -1,7 +1,7 @@
 import { AlbumIcon, GalleryIcon, HeartIcon } from "@/components/icons";
 
 export const siteConfig = {
-  title: "12StemA7 Gallery",
+  title: "PHOTOS APP",
   sideNav: [
     {
       name: "Gallery",

@@ -24,10 +24,10 @@ export const generateSignature = () => {
   return signature;
 };
 
-export const getImages = async (next_cursor?: string) => {
+export const getImages = async (next_cursor?: string, expression?: string) => {
   const result = await cloudinary.search
-    .expression("resource_type:image")
-    .sort_by("public_id", "asc")
+    .expression(expression ?? "resource_type:image")
+    .sort_by("created_at", "desc")
     .next_cursor(next_cursor)
     .execute() as SearchResult;
 

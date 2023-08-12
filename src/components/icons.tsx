@@ -5,13 +5,14 @@ export const AdjustmentsIcon: React.FC<
 > = ({ ...props }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -27,13 +28,14 @@ export const DownloadIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -49,13 +51,14 @@ export const DeletedIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -71,13 +74,14 @@ export const DeleteIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -93,13 +97,14 @@ export const RefreshIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -115,13 +120,13 @@ export const UploadIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-      {...props}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -137,13 +142,14 @@ export const LinkIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -159,13 +165,14 @@ export const EnterFullScreenIcon: React.FC<
 > = ({ ...props }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -181,13 +188,14 @@ export const ExitFullScreenIcon: React.FC<
 > = ({ ...props }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -203,13 +211,14 @@ export const ArrowUpIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -225,13 +234,14 @@ export const ArrowRightIcon: React.FC<
 > = ({ ...props }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -247,13 +257,14 @@ export const ArrowLeftIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -269,13 +280,14 @@ export const ArrowDownIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -291,13 +303,14 @@ export const ChevronDoubleUp: React.FC<
 > = ({ ...props }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -313,13 +326,14 @@ export const ChevronUp: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -335,13 +349,14 @@ export const ChevronDoubleDown: React.FC<
 > = ({ ...props }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -357,13 +372,14 @@ export const ChevronDown: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -379,13 +395,14 @@ export const HomeIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -401,13 +418,14 @@ export const MoonIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -423,13 +441,14 @@ export const SunIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -445,13 +464,14 @@ export const HeartIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -467,13 +487,14 @@ export const GalleryIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -489,13 +510,14 @@ export const ArrowRightCircle: React.FC<
 > = ({ ...props }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -511,13 +533,14 @@ export const ArrowLeftCircle: React.FC<
 > = ({ ...props }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
@@ -533,13 +556,14 @@ export const AlbumIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-      {...props}
+
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-6 h-6"
+      {...props}
     >
       <path
         strokeLinecap="round"
