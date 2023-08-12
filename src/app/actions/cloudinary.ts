@@ -1,11 +1,13 @@
 "use server";
 
 import { v2 as cloudinary } from "cloudinary";
+import { revalidatePath } from "next/cache";
 type ImageKeys = {
   public_id: string;
   width: number;
   height: number;
   filename: string;
+  tags: string[];
   secure_url: string;
 };
 
@@ -29,7 +31,24 @@ export const getImages = async (next_cursor?: string, expression?: string) => {
     .expression(expression ?? "resource_type:image")
     .sort_by("created_at", "desc")
     .next_cursor(next_cursor)
+    .with_field("tags")
     .execute() as SearchResult;
 
   return result;
+};
+
+export const setAsFavorite = async (
+  publicId: string,
+  isFavorite: boolean
+) => {
+  if (isFavorite) {
+    await cloudinary.uploader.remove_tag("favorite", [publicId]);
+  } else {
+    await cloudinary.uploader.add_tag("favorite", [publicId]);
+  }
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(revalidatePath("/gallery"));
+    }, 1000);
+  });
 };

@@ -14,7 +14,7 @@ const GalleryPage: React.FC = () => {
         <h1 className="text-4xl font-bold">Gallery</h1>
         <UploadButton />
       </div>
-      <div className="py-12 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div className="py-12 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-4">
         <React.Suspense fallback={<p>Loading images...</p>}>
           <ImageSection />
         </React.Suspense>

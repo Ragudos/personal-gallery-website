@@ -17,6 +17,7 @@ export const ImageSection: React.FC = async () => {
           loading={index > 10 ? "lazy" : "eager"}
           fetchPriority={index > 10 ? "low" : "high"}
           priority={index <= 10}
+          tags={img.tags}
         />
       ))}
     </React.Fragment>
