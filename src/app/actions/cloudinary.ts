@@ -6,6 +6,7 @@ type ImageKeys = {
   width: number;
   height: number;
   filename: string;
+  secure_url: string;
 };
 
 export type SearchResult = {
@@ -23,11 +24,10 @@ export const generateSignature = () => {
   return signature;
 };
 
-export const getImages = async (next_cursor?: string, max: number = 10) => {
+export const getImages = async (next_cursor?: string) => {
   const result = await cloudinary.search
-    .expression("resource_type:image AND tags=12stema7")
+    .expression("resource_type:image")
     .sort_by("public_id", "asc")
-    .max_results(max)
     .next_cursor(next_cursor)
     .execute() as SearchResult;
 
