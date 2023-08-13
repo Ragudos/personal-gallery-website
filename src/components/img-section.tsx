@@ -48,7 +48,7 @@ export const ImageSection: React.FC<ImageSectionProps> = ({
           )}
         </React.Fragment>
       )}
-      {matches && !isInDesktop ? (
+      {matches && !isInDesktop && (
         <React.Fragment>
           {resources.length > 3 ? (
             <React.Fragment>
@@ -64,7 +64,8 @@ export const ImageSection: React.FC<ImageSectionProps> = ({
             </React.Fragment>
           )}
         </React.Fragment>
-      ) : (
+      )}
+      {!matches && !isInDesktop && (
         <React.Fragment>
           {resources.length > 2 ? (
             <React.Fragment>
