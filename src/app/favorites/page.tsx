@@ -12,7 +12,7 @@ const FavoritesPage: React.FC = () => {
       <div className="flex justify-between gap-4 items-center w-full">
         <h1 className="text-4xl font-bold">Favorites</h1>
       </div>
-      <div className="py-12 grid grid-cols-2 sm:grid-cols-3 gap-4">
+      <div className="py-12 grid grid-cols-2 sm:grid-cols-3 gap-4 xl:grid-cols-4">
         <React.Suspense fallback={<p>Loading images...</p>}>
           <ImageSection />
         </React.Suspense>

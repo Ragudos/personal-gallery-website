@@ -19,6 +19,7 @@ type CloudinaryImageProps = {
   fetchPriority?: "low" | "high" | "auto";
   priority?: boolean;
   tags: string[];
+  // eslint-disable-next-line no-unused-vars
   onUnHeart: (resourceId: string) => void;
 };
 
@@ -73,28 +74,28 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
               onClick={() => {
                 // for optimistic updates
                 if (!transition) {
-                  toast({
-                    title: `${isFavorite ? "Removing image as favorite" : "Setting image as favorite"}`
-                  }, publicId);
                   setIsFavorite((prev) => (!prev));
+                  onUnHeart(publicId);
                   startTransition(async () => {
                     try {
                       await setAsFavorite(publicId, tags.includes("favorite"));
                       dismiss(publicId);
-                      toast({
-                        title: "Success!"
-                      });
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    } catch (error: any) {
-                      console.error(error);
-                      toast({
-                        title: "Something went wrong",
-                        description: error.message
-                      });
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    } catch (error: unknown) {
+                      if (error instanceof Error) {
+                        toast({
+                          title: "Something went wrong",
+                          description: error.message
+                        });
+                      } else if (typeof error === "string") {
+                        toast({
+                          title: "Something went wrong",
+                          description: error
+                        });
+                      }
                       setIsFavorite((prev) => (!prev));
                     }
                     router.refresh();
-                    onUnHeart(publicId);
                   });
                 }
               }}

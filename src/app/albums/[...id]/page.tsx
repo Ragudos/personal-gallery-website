@@ -20,7 +20,7 @@ const GalleryPage: React.FC<{ params: { id: string[]; } }> = ({
         <h1 className="text-4xl font-bold">{id[id.length - 1]}</h1>
         <UploadButton folderPath={folderPath} />
       </div>
-      <div className="py-12 gap-4 grid grid-cols-2 sm:grid-cols-3">
+      <div className="py-12 gap-4 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4">
         <React.Suspense fallback={<p>Loading images...</p>}>
           <GalleryImages folderPath={folderPath} />
         </React.Suspense>

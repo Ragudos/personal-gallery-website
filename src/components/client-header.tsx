@@ -9,11 +9,12 @@ import { useOnMount } from "@/lib/hooks/use-on-mount";
 
 export const ClientHeader: React.FC<{
   session: null;
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 }> = ({ session }) => {
   return (
     <div className="flex gap-2 items-center">
       <ThemeToggle />
-      {session ? (
+      {/* {session ? (
         <Button size={"sm"} variant={"outline"}>
           Sign out
         </Button>
@@ -21,7 +22,7 @@ export const ClientHeader: React.FC<{
         <Button size={"sm"} variant={"outline"}>
           Sign in
         </Button>
-      )}
+      )} */}
     </div>
   );
 };

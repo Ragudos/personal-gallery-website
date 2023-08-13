@@ -16,7 +16,7 @@ const AlbumPage: React.FC = () => {
           <h1 className="text-4xl font-bold">Albums</h1>
           <ToggleCreateAlbumPopup />
         </div>
-        <div className="py-12 grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <div className="py-12 grid grid-cols-2 sm:grid-cols-3 gap-4 xl:grid-cols-4">
           <React.Suspense fallback={<p>Loading images...</p>}>
             <AlbumList />
           </React.Suspense>

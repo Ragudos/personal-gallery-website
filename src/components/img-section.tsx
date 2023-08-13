@@ -16,7 +16,12 @@ export const ImageSection: React.FC<ImageSectionProps> = ({
   resources
 }) => {
   const matches = useMediaQuery("(min-width: 640px)");
-  const MAX_COLUMNS = matches ? 3 : 2;
+  const isInDesktop = useMediaQuery("(min-width: 1280px)");
+  const MAX_COLUMNS = isInDesktop
+    ? 4
+    : matches
+      ? 3
+      : 2;
 
   const getColumns = (colIndex: number) => {
     return resources.filter((resouce, idx) => (
@@ -26,7 +31,24 @@ export const ImageSection: React.FC<ImageSectionProps> = ({
 
   return (
     <React.Fragment>
-      {matches ? (
+      {isInDesktop && (
+        <React.Fragment>
+          {resources.length > 4 ? (
+            <React.Fragment>
+              {[getColumns(0), getColumns(1), getColumns(2), getColumns(3)].map((col, index) => (
+                <div key={index} className="flex flex-col gap-4">
+                  {col.map((img, index) => (getImage(img, index)))}
+                </div>
+              ))}
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              {resources.map((img, index) => (getImage(img, index)))}
+            </React.Fragment>
+          )}
+        </React.Fragment>
+      )}
+      {matches && !isInDesktop ? (
         <React.Fragment>
           {resources.length > 3 ? (
             <React.Fragment>
