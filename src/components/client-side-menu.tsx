@@ -13,27 +13,26 @@ export const ClientSideMenu: React.FC = () => {
 
   return (
     <React.Fragment>
-      {siteConfig.sideNav.map((link) => (
-        <li key={link.id}>
-          <Link
-            href={link.href}
-            aria-label={link.name}
-            title={link.name}
-            className={cn(
-              buttonVariants({
+      {
+        siteConfig.sideNav.map((link) => (
+          <li key={link.id}>
+            <Link
+              href={link.href}
+              aria-label={link.name}
+              title={link.name}
+              className={cn(buttonVariants({
                 variant: "ghost",
-                className: "w-full p-4 justify-start gap-2",
-              }),
-              {
-                "bg-accent": pathname === link.href,
-              },
-            )}
-          >
-            <link.icon />
-            {link.name}
-          </Link>
-        </li>
-      ))}
+                className: "w-full p-4 justify-start gap-2"
+              }), {
+                "bg-accent": pathname === link.href
+              })}
+            >
+              <link.icon />
+              {link.name}
+            </Link>
+          </li>
+        ))
+      }
     </React.Fragment>
   );
 };

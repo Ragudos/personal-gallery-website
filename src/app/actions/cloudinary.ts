@@ -36,15 +36,26 @@ export const generateSignature = () => {
 };
 
 export const getImages = async (next_cursor?: string, expression?: string, max_results?: number) => {
-  const result = await cloudinary.search
-    .expression(expression ?? "resource_type:image")
-    .sort_by("created_at", "desc")
-    .next_cursor(next_cursor)
-    .with_field("tags")
-    .max_results(max_results)
-    .execute() as SearchResult;
+  if (max_results) {
+    const result = await cloudinary.search
+      .expression(expression ?? "resource_type:image")
+      .sort_by("created_at", "desc")
+      .next_cursor(next_cursor)
+      .with_field("tags")
+      .max_results(max_results)
+      .execute() as SearchResult;
 
-  return result;
+    return result;
+  } else {
+    const result = await cloudinary.search
+      .expression(expression ?? "resource_type:image")
+      .sort_by("created_at", "desc")
+      .next_cursor(next_cursor)
+      .with_field("tags")
+      .execute() as SearchResult;
+
+    return result;
+  }
 };
 
 export const setAsFavorite = async (
@@ -91,7 +102,7 @@ export const getAlbums = async ({
     };
   };
 
-  return { albums };
+  return { folders: albums.folders };
 };
 
 export const addAlbum = async (formData: FormData) => {
