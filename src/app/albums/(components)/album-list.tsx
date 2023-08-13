@@ -1,4 +1,4 @@
-import { getAlbums } from "@/app/actions/cloudinary";
+import { Folders, ImageKeys, getAlbums } from "@/app/actions/cloudinary";
 import * as React from "react";
 import { AlbumIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
@@ -8,7 +8,13 @@ import { CloudinaryImage } from "./cloudinary-img";
 export const AlbumList: React.FC = async () => {
   const { folders, thumbnails } = await getAlbums({
     isWithThumbnail: true
-  });
+  }) as {
+    folders: Folders[],
+    thumbnails: {
+      folderPath: string,
+      thumbnail: ImageKeys
+    }[]
+  };
 
   return (
     <React.Fragment>
