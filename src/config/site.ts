@@ -12,7 +12,7 @@ export const siteConfig = {
     {
       name: "Albums",
       id: "link-to-albums",
-      href: "/album",
+      href: "/albums",
       icon: AlbumIcon,
     },
     {

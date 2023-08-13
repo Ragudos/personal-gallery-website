@@ -16,6 +16,15 @@ export type SearchResult = {
   next_cursor: string;
 };
 
+export type Folders = {
+  name: string;
+  path: string;
+};
+
+export type AlbumsResponse = {
+  folders: Folders[];
+};
+
 export const generateSignature = () => {
   const timestamp = Math.floor((new Date).getTime() / 1000);
 
@@ -26,12 +35,13 @@ export const generateSignature = () => {
   return signature;
 };
 
-export const getImages = async (next_cursor?: string, expression?: string) => {
+export const getImages = async (next_cursor?: string, expression?: string, max_results?: number) => {
   const result = await cloudinary.search
     .expression(expression ?? "resource_type:image")
     .sort_by("created_at", "desc")
     .next_cursor(next_cursor)
     .with_field("tags")
+    .max_results(max_results)
     .execute() as SearchResult;
 
   return result;
@@ -54,4 +64,40 @@ export const setAsFavorite = async (
       })());
     }, 1000);
   });
+};
+
+export const getAlbums = async ({
+  isWithThumbnail
+}: {
+  isWithThumbnail?: boolean
+}) => {
+  const albums = await cloudinary.api.sub_folders("cloudinary-gallery-project") as AlbumsResponse;
+
+  if (isWithThumbnail) {
+    const allFolders = albums.folders;
+    const images = [];
+
+    for (const folder of allFolders) {
+      const result = await getImages(undefined, `folder:${folder.path} AND resource_type:image`, 1);
+      images.push({
+        folderPath: folder.path,
+        thumbnail: result.resources[0]
+      });
+    }
+
+    return {
+      folders: allFolders,
+      thumbnails: images
+    };
+  };
+
+  return { albums };
+};
+
+export const addAlbum = async (formData: FormData) => {
+  const name = formData.get("album-name") as string;
+
+  await cloudinary.api.create_folder(`/cloudinary-gallery-project/${name}`);
+
+  revalidatePath("/albums");
 };
