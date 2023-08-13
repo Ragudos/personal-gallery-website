@@ -19,7 +19,7 @@ export const ImgSection: React.FC<ImageSectionProps> = ({
   return (
     <React.Fragment>
       {!resources.length ? (
-        <p>There no images in this album.</p>
+        <p>There are no images in this album.</p>
       ) : (
         <ImageSection
           resources={resources}
