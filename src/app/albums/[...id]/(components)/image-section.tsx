@@ -12,6 +12,14 @@ type ImageSectionProps = {
 
 export const ImgSection: React.FC<ImageSectionProps> = ({ resources }) => {
   const [imgResources, setImgResources] = React.useState(resources);
+
+const handleRemoveResources = (publicId) => {
+                setImgResources((prevResources) =>
+                  prevResources.filter(
+                    (resource) => resource.public_id !== publicId,
+                  ),
+                );
+              };
   return (
     <React.Fragment>
       {!imgResources.length ? (
@@ -31,13 +39,8 @@ export const ImgSection: React.FC<ImageSectionProps> = ({ resources }) => {
               priority={index <= 10}
               tags={img.tags}
               secureUrl={img.secure_url}
-              onDelete={(publicId) => {
-                setImgResources((prevResources) =>
-                  prevResources.filter(
-                    (resource) => resource.public_id !== publicId,
-                  ),
-                );
-              }}
+              onDelete={handleRemoveResources}
+              onUnheart=(handleRemoveResources}
             />
           )}
         />
