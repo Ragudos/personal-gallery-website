@@ -85,7 +85,7 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
                 setIsBeingDeleted(false);
                 onDelete(publicId);
               }}
-              onUnheart={onUnheart)
+              onUnheart={onUnheart}
             />
           </div>
           <CldImage

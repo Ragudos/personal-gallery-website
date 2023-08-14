@@ -17,7 +17,7 @@ interface ImageOptionsProps {
   onDelete: () => void;
   onStartDeletion: () => void;
   // eslint-disable-next-line no-unused-vars
-  onUnheart: (resource: string) => void;
+  onUnheart?: (resource: string) => void;
 }
 
 export const ImageOptions: React.FC<ImageOptionsProps> = ({
@@ -81,7 +81,9 @@ export const ImageOptions: React.FC<ImageOptionsProps> = ({
               onClick={() => {
                 // for optimistic updates
                 onPopoverClose();
-                onUnheart(imgPublicId);
+                if (onUnheart) {
+                  onUnheart(imgPublicId);
+                }
                 if (!transition) {
                   setIsFavorite((prev) => !prev);
                   startTransition(async () => {
