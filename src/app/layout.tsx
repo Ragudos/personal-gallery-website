@@ -1,10 +1,19 @@
 import "./globals.css";
+
+import * as React from "react";
+
 import TopLoader from "nextjs-toploader";
 
-import { ContextProvider } from "@/components/context-provider";
+import dynamic from "next/dynamic";
 import type { Metadata } from "next";
+
+import { ContextProvider } from "@/components/context-provider";
 import { Header } from "@/components/header";
 import { SideMenu } from "@/components/side-menu";
+
+const AddToAlbumDialog = dynamic(() => import("@/components/add-to-album-dialog").then((module) => {
+  return module.AddToAlbumDialog;
+}));
 
 export const metadata: Metadata = {
   title: "Cloudinary Gallery by PSanctuary",
@@ -23,6 +32,9 @@ const RootLayout: React.FC<{
           <div className="flex flex-col lg:flex-row gap-2 items-start container min-h-[40rem]">
             <SideMenu />
             <div className="py-8 w-full">{children}</div>
+            <React.Suspense>
+              <AddToAlbumDialog />
+            </React.Suspense>
           </div>
         </ContextProvider>
       </body>

@@ -1,10 +1,15 @@
-import { Folders, ImageKeys, getAlbums } from "@/app/actions/cloudinary";
+
 import * as React from "react";
+
+import Link from "next/link";
+import Image from "next/image";
+
+import { Folders, ImageKeys, getAlbums } from "@/app/actions/cloudinary";
+
 import { AlbumIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+
 import { CloudinaryImage } from "./cloudinary-img";
-import Image from "next/image";
 
 export const AlbumList: React.FC = async () => {
   const { folders, thumbnails } = (await getAlbums({

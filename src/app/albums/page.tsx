@@ -18,7 +18,7 @@ const AlbumPage: React.FC = () => {
           <ToggleCreateAlbumPopup />
         </div>
         <div className="py-12 grid grid-cols-2 sm:grid-cols-3 gap-4 xl:grid-cols-4">
-          <React.Suspense fallback={<p>Loading images...</p>}>
+          <React.Suspense fallback={<p>Loading albums...</p>}>
             <AlbumList />
           </React.Suspense>
         </div>

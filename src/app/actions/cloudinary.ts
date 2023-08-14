@@ -85,11 +85,13 @@ export const setAsFavorite = async (publicId: string, isFavorite: boolean) => {
 
 export const getAlbums = async ({
   isWithThumbnail,
+  rootFolder
 }: {
   isWithThumbnail?: boolean;
+  rootFolder?: string;
 }) => {
   const albums = (await cloudinary.api.sub_folders(
-    "cloudinary-gallery-project",
+    rootFolder ?? "cloudinary-gallery-project",
   )) as AlbumsResponse;
 
   if (isWithThumbnail) {
@@ -129,4 +131,11 @@ export const deleteImage = async (imgId: string, path: string) => {
   await cloudinary.api.delete_resources([imgId]);
 
   revalidatePath(path);
+};
+
+export const moveImage = async (imgId: string, folderName: string, rootFolder?: string) => {
+  await cloudinary.uploader.rename(
+    imgId,
+    `${rootFolder ?? "cloudinary-gallery-project"}/${folderName}/${imgId.split("/").at(-1)}`
+  );
 };

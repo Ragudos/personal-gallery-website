@@ -81,7 +81,7 @@
 
   
   .react-share {
-    @apply font-semibold inline-flex bg-transparent hover:bg-accent hover:text-foreground p-1 text-base !important;
+    @apply text-sm md:text-base inline-flex bg-transparent hover:bg-accent hover:text-foreground p-1 !important;
   }
 }
 
