@@ -15,8 +15,8 @@ export const ImgSection: React.FC<ImageSectionProps> = ({ resources }) => {
 
 const handleRemoveResources = (publicId) => {
                 setImgResources((prevResources) => (
-prevResources.filter(
-                    (resource) => resource.public_id !== publicId,
+                    prevResources.filter(
+                     (resource) => resource.public_id !== publicId,
                   ))
                 );
               };
