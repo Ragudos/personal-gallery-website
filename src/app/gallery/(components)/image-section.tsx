@@ -29,11 +29,11 @@ export const ImgSection: React.FC<ImageSectionProps> = ({ resources }) => {
             tags={img.tags}
             secureUrl={img.secure_url}
             onDelete={(publicId) => {
-              setImgResources((prevResources) => (
-                prevResources.filter((resource) => (
-                  resource.public_id !== publicId
-                ))
-              ));
+              setImgResources((prevResources) =>
+                prevResources.filter(
+                  (resource) => resource.public_id !== publicId,
+                ),
+              );
             }}
           />
         )}

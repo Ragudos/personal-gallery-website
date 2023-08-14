@@ -38,7 +38,7 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
   tags,
   secureUrl,
   onDelete,
-  containerClassName
+  containerClassName,
 }) => {
   const [isLoading, setIsLoading] = React.useState(true);
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
@@ -66,11 +66,9 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
         />
       ) : (
         <div
-          className={cn(
-            containerClassName,
-            "relative",
-            { "opacity-70 pointer-events-none": isBeingDeleted }
-          )}
+          className={cn(containerClassName, "relative", {
+            "opacity-70 pointer-events-none": isBeingDeleted,
+          })}
           style={{
             maxHeight: `${height}px`,
             maxWidth: `${width}px`,
@@ -80,19 +78,19 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
             <Button
               variant={"ghost"}
               size={"icon"}
-              className={cn(
-                "hover:bg-transparent group p-1",
-                { "pointer-events-none": isBeingDeleted }
-              )}
+              className={cn("hover:bg-transparent group p-1", {
+                "pointer-events-none": isBeingDeleted,
+              })}
               aria-label="Click to mark this image as a favorite"
               onClick={() => {
                 // for optimistic updates
                 if (!transition) {
                   toast(
                     {
-                      title: `${isFavorite
-                        ? "Removing image as favorite"
-                        : "Setting image as favorite"
+                      title: `${
+                        isFavorite
+                          ? "Removing image as favorite"
+                          : "Setting image as favorite"
                       }`,
                     },
                     publicId,
@@ -114,9 +112,10 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
               }}
             >
               <HeartIcon
-                className={`group-hover:fill-red-500/80 group-hover:stroke-red-500/80${isFavorite
-                  ? " fill-red-500 stroke-red-500"
-                  : " stroke-red-700"
+                className={`group-hover:fill-red-500/80 group-hover:stroke-red-500/80${
+                  isFavorite
+                    ? " fill-red-500 stroke-red-500"
+                    : " stroke-red-700"
                 } group-active:fill-red-500/60 group-active:stroke-red-500/60`}
               />
             </Button>

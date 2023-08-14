@@ -21,6 +21,9 @@ export const UploadButton: React.FC<{ folderPath: string }> = ({
         options={{
           folder: folderPath,
         }}
+        onClose={() => {
+          router.refresh();
+        }}
         uploadPreset="lx9juehj"
         onUpload={() => {
           router.refresh();

@@ -19,6 +19,9 @@ export const UploadButton: React.FC = () => {
         options={{
           folder: "cloudinary-gallery-project",
         }}
+        onClose={() => {
+          router.refresh();
+        }}
         uploadPreset="lx9juehj"
         onUpload={() => {
           router.refresh();
