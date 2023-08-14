@@ -16,6 +16,8 @@ interface ImageOptionsProps {
   isBeingDeleted: boolean;
   onDelete: () => void;
   onStartDeletion: () => void;
+  // eslint-disable-next-line no-unused-vars
+  onUnheart: (resource: string) => void;
 }
 
 export const ImageOptions: React.FC<ImageOptionsProps> = ({
@@ -24,6 +26,7 @@ export const ImageOptions: React.FC<ImageOptionsProps> = ({
   isBeingDeleted,
   onDelete,
   onStartDeletion,
+  onUnheart,
 }) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -68,7 +71,9 @@ export const ImageOptions: React.FC<ImageOptionsProps> = ({
           <p className="font-medium px-2">Move, Favorite, & Delete</p>
           <div className="flex flex-col gap-2">
             <Button
-              aria-label={isFavorite ? "Unset image as favorite" : "Set image as favorite"}
+              aria-label={
+                isFavorite ? "Unset image as favorite" : "Set image as favorite"
+              }
               variant={"ghost"}
               className={cn("group p-1 md:text-base font-normal", {
                 "pointer-events-none": isBeingDeleted,
@@ -76,6 +81,7 @@ export const ImageOptions: React.FC<ImageOptionsProps> = ({
               onClick={() => {
                 // for optimistic updates
                 onPopoverClose();
+                onUnheart(imgPublicId);
                 if (!transition) {
                   setIsFavorite((prev) => !prev);
                   startTransition(async () => {
@@ -99,8 +105,14 @@ export const ImageOptions: React.FC<ImageOptionsProps> = ({
                 }
               }}
             >
-              <HeartIcon className={`w-6 h-6${isFavorite ? " fill-red-500 stroke-red-500" : ""} `} />
-              <span className="flex-1">{isFavorite ? "Unset as favorite" : "Set as favorite"}</span>
+              <HeartIcon
+                className={`w-6 h-6${
+                  isFavorite ? " fill-red-500 stroke-red-500" : ""
+                } `}
+              />
+              <span className="flex-1">
+                {isFavorite ? "Unset as favorite" : "Set as favorite"}
+              </span>
             </Button>
             <Button
               aria-label="Delete image"
@@ -108,7 +120,9 @@ export const ImageOptions: React.FC<ImageOptionsProps> = ({
               className="md:text-base p-1 w-full justify-between font-normal"
               onClick={() => {
                 onPopoverClose();
-                router.push(`${pathname}?addToAlbum=true&imageId=${imgPublicId}`);
+                router.push(
+                  `${pathname}?addToAlbum=true&imageId=${imgPublicId}`,
+                );
               }}
             >
               <AlbumIcon className="w-5 h-5" />

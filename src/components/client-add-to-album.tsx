@@ -12,7 +12,7 @@ import { toast } from "@/components/ui/use-toast";
 import { Folders, moveImage } from "@/app/actions/cloudinary";
 
 export const ClientAddToAlbumDialog: React.FC<{ folders: Folders[] }> = ({
-  folders
+  folders,
 }) => {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -72,9 +72,16 @@ export const ClientAddToAlbumDialog: React.FC<{ folders: Folders[] }> = ({
           {imageId ? (
             <React.Fragment>
               <Label htmlFor="album-name-select">Select an album</Label>
-              <select name="album-name-select" id="album-name-select" placeholder="There are currently no albums." className=" w-full p-2 rounded-lg bg-background text-foreground border-[1px] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+              <select
+                name="album-name-select"
+                id="album-name-select"
+                placeholder="There are currently no albums."
+                className=" w-full p-2 rounded-lg bg-background text-foreground border-[1px] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
                 {folders.map((folder) => (
-                  <option key={folder.path} value={folder.name} >{folder.name}</option>
+                  <option key={folder.path} value={folder.name}>
+                    {folder.name}
+                  </option>
                 ))}
               </select>
               <div className="flex justify-end gap-4 items-center mt-4">
@@ -107,7 +114,7 @@ export const ClientAddToAlbumDialog: React.FC<{ folders: Folders[] }> = ({
             </React.Fragment>
           )}
         </form>
-      </div >
-    </Dialog >
+      </div>
+    </Dialog>
   );
 };

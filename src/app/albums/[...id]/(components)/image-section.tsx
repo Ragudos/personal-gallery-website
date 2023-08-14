@@ -11,13 +11,14 @@ type ImageSectionProps = {
 };
 
 export const ImgSection: React.FC<ImageSectionProps> = ({ resources }) => {
+  const [imgResources, setImgResources] = React.useState(resources);
   return (
     <React.Fragment>
-      {!resources.length ? (
-        <p>There are no images in this album.</p>
+      {!imgResources.length ? (
+        <p>There are no images in this album</p>
       ) : (
         <ImageSection
-          resources={resources}
+          resources={imgResources}
           getImage={(img, index) => (
             <CloudinaryImage
               key={img.public_id}
@@ -29,6 +30,14 @@ export const ImgSection: React.FC<ImageSectionProps> = ({ resources }) => {
               fetchPriority={index > 10 ? "low" : "high"}
               priority={index <= 10}
               tags={img.tags}
+              secureUrl={img.secure_url}
+              onDelete={(publicId) => {
+                setImgResources((prevResources) =>
+                  prevResources.filter(
+                    (resource) => resource.public_id !== publicId,
+                  ),
+                );
+              }}
             />
           )}
         />

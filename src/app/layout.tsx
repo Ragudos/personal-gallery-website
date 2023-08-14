@@ -11,9 +11,11 @@ import { ContextProvider } from "@/components/context-provider";
 import { Header } from "@/components/header";
 import { SideMenu } from "@/components/side-menu";
 
-const AddToAlbumDialog = dynamic(() => import("@/components/add-to-album-dialog").then((module) => {
-  return module.AddToAlbumDialog;
-}));
+const AddToAlbumDialog = dynamic(() =>
+  import("@/components/add-to-album-dialog").then((module) => {
+    return module.AddToAlbumDialog;
+  }),
+);
 
 export const metadata: Metadata = {
   title: "Cloudinary Gallery by PSanctuary",

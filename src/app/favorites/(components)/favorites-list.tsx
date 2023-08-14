@@ -18,6 +18,14 @@ export const FavoritesList: React.FC<FavoritesListProps> = ({
     setResources(initialResources.resources);
   }, [initialResources]);
 
+  const handleRemovalOfResources = (resourceId: string) => {
+    setResources((currentResources) => {
+      return currentResources.filter(
+        (resource) => resource.public_id !== resourceId,
+      );
+    });
+  };
+
   return (
     <React.Fragment>
       <ImageSection
@@ -34,13 +42,9 @@ export const FavoritesList: React.FC<FavoritesListProps> = ({
               fetchPriority={index > 10 ? "low" : "high"}
               priority={index <= 10}
               tags={img.tags}
-              onUnHeart={(resourceId: string) => {
-                setResources((currentResources) => {
-                  return currentResources.filter(
-                    (resource) => resource.public_id !== resourceId,
-                  );
-                });
-              }}
+              secureUrl={img.secure_url}
+              onUnheart={handleRemovalOfResources}
+              onDelete={handleRemovalOfResources}
             />
           );
         }}

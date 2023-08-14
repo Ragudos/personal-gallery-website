@@ -85,7 +85,7 @@ export const setAsFavorite = async (publicId: string, isFavorite: boolean) => {
 
 export const getAlbums = async ({
   isWithThumbnail,
-  rootFolder
+  rootFolder,
 }: {
   isWithThumbnail?: boolean;
   rootFolder?: string;
@@ -133,9 +133,15 @@ export const deleteImage = async (imgId: string, path: string) => {
   revalidatePath(path);
 };
 
-export const moveImage = async (imgId: string, folderName: string, rootFolder?: string) => {
+export const moveImage = async (
+  imgId: string,
+  folderName: string,
+  rootFolder?: string,
+) => {
   await cloudinary.uploader.rename(
     imgId,
-    `${rootFolder ?? "cloudinary-gallery-project"}/${folderName}/${imgId.split("/").at(-1)}`
+    `${rootFolder ?? "cloudinary-gallery-project"}/${folderName}/${imgId
+      .split("/")
+      .at(-1)}`,
   );
 };

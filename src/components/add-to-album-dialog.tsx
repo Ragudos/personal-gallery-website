@@ -1,4 +1,3 @@
-
 import { getAlbums } from "@/app/actions/cloudinary";
 import * as React from "react";
 import { ClientAddToAlbumDialog } from "./client-add-to-album";

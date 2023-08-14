@@ -1,14 +1,13 @@
 "use client";
 
-import { setAsFavorite } from "@/app/actions/cloudinary";
-import { HeartIcon } from "@/components/icons";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
-import { useToast } from "@/components/ui/use-toast";
-import { useOnMount } from "@/lib/hooks/use-on-mount";
-import { CldImage } from "next-cloudinary";
-import { useRouter } from "next/navigation";
 import * as React from "react";
+
+import { ImageOptions } from "@/components/img-options";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useOnMount } from "@/lib/hooks/use-on-mount";
+import { cn } from "@/lib/utils";
+import { CldImage } from "next-cloudinary";
+import { ShareImageOptions } from "@/components/share-img-options";
 
 type CloudinaryImageProps = {
   publicId: string;
@@ -19,8 +18,12 @@ type CloudinaryImageProps = {
   fetchPriority?: "low" | "high" | "auto";
   priority?: boolean;
   tags: string[];
+  secureUrl: string;
   // eslint-disable-next-line no-unused-vars
-  onUnHeart: (resourceId: string) => void;
+  onDelete: (publicId: string) => void;
+  containerClassName?: string;
+  // eslint-disable-next-line no-unused-vars
+  onUnheart: (resource: string) => void;
 };
 
 export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
@@ -32,15 +35,14 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
   fetchPriority = "auto",
   priority = false,
   tags,
-  onUnHeart,
+  secureUrl,
+  onDelete,
+  containerClassName,
+  onUnheart,
 }) => {
   const [isLoading, setIsLoading] = React.useState(true);
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-  const [transition, startTransition] = React.useTransition();
-  const { toast, dismiss } = useToast();
   const didMount = useOnMount();
-  const router = useRouter();
-  const [isFavorite, setIsFavorite] = React.useState(tags.includes("favorite"));
+  const [isBeingDeleted, setIsBeingDeleted] = React.useState(false);
 
   React.useEffect(() => {
     if (didMount) {
@@ -59,53 +61,32 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
         />
       ) : (
         <div
-          className="relative"
+          className={cn(containerClassName, "relative", {
+            "opacity-70 pointer-events-none": isBeingDeleted,
+          })}
           style={{
             maxHeight: `${height}px`,
             maxWidth: `${width}px`,
           }}
         >
-          <div className="absolute top-1 right-1">
-            <Button
-              variant={"ghost"}
-              size={"icon"}
-              className="hover:bg-transparent group p-1"
-              aria-label="Click to mark this image as a favorite"
-              onClick={() => {
-                // for optimistic updates
-                if (!transition) {
-                  setIsFavorite((prev) => !prev);
-                  onUnHeart(publicId);
-                  startTransition(async () => {
-                    try {
-                      await setAsFavorite(publicId, tags.includes("favorite"));
-                      dismiss(publicId);
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    } catch (error: unknown) {
-                      if (error instanceof Error) {
-                        toast({
-                          title: "Something went wrong",
-                          description: error.message,
-                        });
-                      } else if (typeof error === "string") {
-                        toast({
-                          title: "Something went wrong",
-                          description: error,
-                        });
-                      }
-                      setIsFavorite((prev) => !prev);
-                    }
-                    router.refresh();
-                  });
-                }
+          <div className="absolute top-1 right-1 flex items-center gap-1">
+            <ShareImageOptions
+              imgPublicId={publicId}
+              imgSecureUrl={secureUrl}
+            />
+            <ImageOptions
+              imgPublicId={publicId}
+              isImageFavorite={tags.includes("favorite")}
+              isBeingDeleted={isBeingDeleted}
+              onStartDeletion={() => {
+                setIsBeingDeleted(true);
               }}
-            >
-              <HeartIcon
-                className={`group-hover:fill-red-500/80 group-hover:stroke-red-500/80${
-                  isFavorite ? " fill-red-500 stroke-red-500" : ""
-                } group-active:fill-red-500/60 group-active:stroke-red-500/60`}
-              />
-            </Button>
+              onDelete={() => {
+                setIsBeingDeleted(false);
+                onDelete(publicId);
+              }}
+              onUnheart={onUnheart}
+            />
           </div>
           <CldImage
             src={publicId}
