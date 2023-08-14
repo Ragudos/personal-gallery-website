@@ -23,7 +23,7 @@ type CloudinaryImageProps = {
   onDelete: (publicId: string) => void;
   containerClassName?: string;
   // eslint-disable-next-line no-unused-vars
-  onUnheart: (resources: string) => void;
+  onUnheart: (publicId: string) => void;
 };
 
 export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
