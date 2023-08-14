@@ -13,13 +13,13 @@ type ImageSectionProps = {
 export const ImgSection: React.FC<ImageSectionProps> = ({ resources }) => {
   const [imgResources, setImgResources] = React.useState(resources);
 
-const handleRemoveResources = (publicId) => {
-                setImgResources((prevResources) => (
-                    prevResources.filter(
-                     (resource) => resource.public_id !== publicId
-                  ))
-                );
-              };
+  const handleRemoveResources = (publicId: string) => {
+   setImgResources((prevResources) => (
+    prevResources.filter((resource) => (
+      resource.public_id !== publicId
+    ))
+  ));
+};
   return (
     <React.Fragment>
       {!imgResources.length ? (
