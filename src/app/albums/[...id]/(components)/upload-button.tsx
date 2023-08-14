@@ -10,8 +10,8 @@ import { useRouter } from "next/navigation";
 
 // };
 
-export const UploadButton: React.FC<{ folderPath: string; }> = ({
-  folderPath
+export const UploadButton: React.FC<{ folderPath: string }> = ({
+  folderPath,
 }) => {
   const router = useRouter();
   return (
@@ -19,7 +19,7 @@ export const UploadButton: React.FC<{ folderPath: string; }> = ({
       <CldUploadButton
         className="flex gap-1 items-center"
         options={{
-          folder: folderPath
+          folder: folderPath,
         }}
         uploadPreset="lx9juehj"
         onUpload={() => {

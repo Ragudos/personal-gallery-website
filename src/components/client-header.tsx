@@ -61,7 +61,9 @@ export const ThemeToggle: React.FC = () => {
             name="night-theme"
             aria-label="Toggle night theme"
             onClick={toggleNight}
-            className={`p-1 w-8 h-8${theme === "dark" ? " bg-foreground/10" : ""} active:bg-foreground/20`}
+            className={`p-1 w-8 h-8${
+              theme === "dark" ? " bg-foreground/10" : ""
+            } active:bg-foreground/20`}
           >
             <MoonIcon className="w-full h-full object-contain" />
           </Button>
@@ -76,7 +78,9 @@ export const ThemeToggle: React.FC = () => {
             name="light-theme"
             aria-label="Toggle light theme"
             onClick={toggleLight}
-            className={`p-1 w-8 h-8${theme === "light" ? " bg-foreground/10" : ""} active:bg-foreground/20`}
+            className={`p-1 w-8 h-8${
+              theme === "light" ? " bg-foreground/10" : ""
+            } active:bg-foreground/20`}
           >
             <SunIcon className="w-full h-full object-contain" />
           </Button>

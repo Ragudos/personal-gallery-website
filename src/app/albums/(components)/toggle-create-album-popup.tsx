@@ -6,7 +6,6 @@ import { AlbumIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { usePathname, useRouter } from "next/navigation";
 
-
 export const ToggleCreateAlbumPopup: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();

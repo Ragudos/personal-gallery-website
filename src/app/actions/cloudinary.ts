@@ -26,42 +26,46 @@ export type AlbumsResponse = {
 };
 
 export const generateSignature = () => {
-  const timestamp = Math.floor((new Date).getTime() / 1000);
+  const timestamp = Math.floor(new Date().getTime() / 1000);
 
-  const signature = cloudinary.utils.api_sign_request({
-    timestamp
-  }, process.env.CLOUDINARY_SECRET as string);
+  const signature = cloudinary.utils.api_sign_request(
+    {
+      timestamp,
+    },
+    process.env.CLOUDINARY_SECRET as string,
+  );
 
   return signature;
 };
 
-export const getImages = async (next_cursor?: string, expression?: string, max_results?: number) => {
+export const getImages = async (
+  next_cursor?: string,
+  expression?: string,
+  max_results?: number,
+) => {
   if (max_results) {
-    const result = await cloudinary.search
+    const result = (await cloudinary.search
       .expression(expression ?? "resource_type:image")
       .sort_by("created_at", "desc")
       .next_cursor(next_cursor)
       .with_field("tags")
       .max_results(max_results)
-      .execute() as SearchResult;
+      .execute()) as SearchResult;
 
     return result;
   } else {
-    const result = await cloudinary.search
+    const result = (await cloudinary.search
       .expression(expression ?? "resource_type:image")
       .sort_by("created_at", "desc")
       .next_cursor(next_cursor)
       .with_field("tags")
-      .execute() as SearchResult;
+      .execute()) as SearchResult;
 
     return result;
   }
 };
 
-export const setAsFavorite = async (
-  publicId: string,
-  isFavorite: boolean
-) => {
+export const setAsFavorite = async (publicId: string, isFavorite: boolean) => {
   if (isFavorite) {
     await cloudinary.uploader.remove_tag("favorite", [publicId]);
   } else {
@@ -69,38 +73,46 @@ export const setAsFavorite = async (
   }
   await new Promise((resolve) => {
     setTimeout(() => {
-      resolve((function () {
-        revalidatePath("/gallery");
-        revalidatePath("/favorites");
-      })());
+      resolve(
+        (function () {
+          revalidatePath("/gallery");
+          revalidatePath("/favorites");
+        })(),
+      );
     }, 1000);
   });
 };
 
 export const getAlbums = async ({
-  isWithThumbnail
+  isWithThumbnail,
 }: {
-  isWithThumbnail?: boolean
+  isWithThumbnail?: boolean;
 }) => {
-  const albums = await cloudinary.api.sub_folders("cloudinary-gallery-project") as AlbumsResponse;
+  const albums = (await cloudinary.api.sub_folders(
+    "cloudinary-gallery-project",
+  )) as AlbumsResponse;
 
   if (isWithThumbnail) {
     const allFolders = albums.folders;
     const images = [];
 
     for (const folder of allFolders) {
-      const result = await getImages(undefined, `folder:${folder.path} AND resource_type:image`, 1);
+      const result = await getImages(
+        undefined,
+        `folder:${folder.path} AND resource_type:image`,
+        1,
+      );
       images.push({
         folderPath: folder.path,
-        thumbnail: result.resources[0]
+        thumbnail: result.resources[0],
       });
     }
 
     return {
       folders: allFolders,
-      thumbnails: images
+      thumbnails: images,
     };
-  };
+  }
 
   return { folders: albums.folders };
 };
@@ -111,4 +123,10 @@ export const addAlbum = async (formData: FormData) => {
   await cloudinary.api.create_folder(`/cloudinary-gallery-project/${name}`);
 
   revalidatePath("/albums");
+};
+
+export const deleteImage = async (imgId: string, path: string) => {
+  await cloudinary.api.delete_resources([imgId]);
+
+  revalidatePath(path);
 };

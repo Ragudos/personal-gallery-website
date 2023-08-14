@@ -7,14 +7,14 @@ import { CloudinaryImage } from "./cloudinary-img";
 import Image from "next/image";
 
 export const AlbumList: React.FC = async () => {
-  const { folders, thumbnails } = await getAlbums({
-    isWithThumbnail: true
-  }) as {
-    folders: Folders[],
+  const { folders, thumbnails } = (await getAlbums({
+    isWithThumbnail: true,
+  })) as {
+    folders: Folders[];
     thumbnails: {
-      folderPath: string,
-      thumbnail: ImageKeys
-    }[]
+      folderPath: string;
+      thumbnail: ImageKeys;
+    }[];
   };
 
   return (

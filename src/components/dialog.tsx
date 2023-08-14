@@ -4,7 +4,7 @@ import { useForwardRef } from "@/lib/hooks/use-forward-ref";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 
-interface DialogProps extends React.DialogHTMLAttributes<HTMLDialogElement> { };
+interface DialogProps extends React.DialogHTMLAttributes<HTMLDialogElement> {}
 
 export const Dialog = React.forwardRef<HTMLDialogElement, DialogProps>(
   ({ children, ...props }, ref) => {
@@ -19,7 +19,7 @@ export const Dialog = React.forwardRef<HTMLDialogElement, DialogProps>(
         if (e.target === el) {
           el.close();
           router.back();
-        };
+        }
       };
       el.addEventListener("click", handleClick);
       return () => el.removeEventListener("click", handleClick);
@@ -30,7 +30,7 @@ export const Dialog = React.forwardRef<HTMLDialogElement, DialogProps>(
         {children}
       </dialog>
     );
-  }
+  },
 );
 
 Dialog.displayName = "Dialog";

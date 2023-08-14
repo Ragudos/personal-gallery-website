@@ -2,12 +2,13 @@ import * as React from "react";
 import { UploadButton } from "./(components)/upload-button";
 import dynamic from "next/dynamic";
 
-const GalleryImages = dynamic(() => import("./(components)/gallery-images").then((module) => {
-  return module.GalleryImages;
-}));
+const GalleryImages = dynamic(() =>
+  import("./(components)/gallery-images").then((module) => {
+    return module.GalleryImages;
+  }),
+);
 
 const GalleryPage: React.FC = () => {
-
   return (
     <section className="lg:px-8 w-full">
       <div className="flex justify-between gap-4 items-center w-full">

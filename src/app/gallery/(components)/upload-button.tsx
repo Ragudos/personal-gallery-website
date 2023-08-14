@@ -17,7 +17,7 @@ export const UploadButton: React.FC = () => {
       <CldUploadButton
         className="flex gap-1 items-center"
         options={{
-          folder: "cloudinary-gallery-project"
+          folder: "cloudinary-gallery-project",
         }}
         uploadPreset="lx9juehj"
         onUpload={() => {

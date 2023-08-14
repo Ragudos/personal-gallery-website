@@ -3,12 +3,13 @@ import dynamic from "next/dynamic";
 import { ToggleCreateAlbumPopup } from "./(components)/toggle-create-album-popup";
 import { CreateAlbumPopup } from "./(components)/create-album-popup";
 
-const AlbumList = dynamic(() => import("./(components)/album-list").then((module) => {
-  return module.AlbumList;
-}));
+const AlbumList = dynamic(() =>
+  import("./(components)/album-list").then((module) => {
+    return module.AlbumList;
+  }),
+);
 
 const AlbumPage: React.FC = () => {
-
   return (
     <React.Fragment>
       <section className="lg:px-8 w-full">

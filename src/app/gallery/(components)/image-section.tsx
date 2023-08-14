@@ -6,20 +6,16 @@ import { ImageKeys } from "@/app/actions/cloudinary";
 import { ImageSection } from "@/components/img-section";
 import { CloudinaryImage } from "./cloudinary-img";
 
-
 type ImageSectionProps = {
   resources: ImageKeys[];
 };
 
-
-export const ImgSection: React.FC<ImageSectionProps> = ({
-  resources
-}) => {
-
+export const ImgSection: React.FC<ImageSectionProps> = ({ resources }) => {
+  const [imgResources, setImgResources] = React.useState(resources);
   return (
     <React.Fragment>
       <ImageSection
-        resources={resources}
+        resources={imgResources}
         getImage={(img, index) => (
           <CloudinaryImage
             key={img.public_id}
@@ -31,6 +27,14 @@ export const ImgSection: React.FC<ImageSectionProps> = ({
             fetchPriority={index > 10 ? "low" : "high"}
             priority={index <= 10}
             tags={img.tags}
+            secureUrl={img.secure_url}
+            onDelete={(publicId) => {
+              setImgResources((prevResources) => (
+                prevResources.filter((resource) => (
+                  resource.public_id !== publicId
+                ))
+              ));
+            }}
           />
         )}
       />

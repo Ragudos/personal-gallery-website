@@ -10,7 +10,7 @@ type FavoritesListProps = {
 };
 
 export const FavoritesList: React.FC<FavoritesListProps> = ({
-  initialResources
+  initialResources,
 }) => {
   const [resources, setResources] = React.useState(initialResources.resources);
 
@@ -22,7 +22,7 @@ export const FavoritesList: React.FC<FavoritesListProps> = ({
     <React.Fragment>
       <ImageSection
         resources={resources}
-        getImage={((img, index) => {
+        getImage={(img, index) => {
           return (
             <CloudinaryImage
               key={img.public_id}
@@ -36,12 +36,14 @@ export const FavoritesList: React.FC<FavoritesListProps> = ({
               tags={img.tags}
               onUnHeart={(resourceId: string) => {
                 setResources((currentResources) => {
-                  return currentResources.filter((resource) => resource.public_id !== resourceId);
+                  return currentResources.filter(
+                    (resource) => resource.public_id !== resourceId,
+                  );
                 });
               }}
             />
           );
-        })}
+        }}
       />
     </React.Fragment>
   );

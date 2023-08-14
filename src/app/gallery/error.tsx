@@ -7,7 +7,7 @@ import * as React from "react";
 
 const ErrorPage: React.FC<{
   error: Error | string;
-  reset: () => void
+  reset: () => void;
 }> = ({ error, reset }) => {
   const router = useRouter();
   let displayText: string;
@@ -33,15 +33,8 @@ const ErrorPage: React.FC<{
           <ArrowLeftIcon className="w-5 h-5" />
           Go back
         </Button>
-        <Button
-          onClick={() => reset()}
-        >
-          Retry
-        </Button>
-        <Button
-          variant={"secondary"}
-          onClick={() => router.refresh()}
-        >
+        <Button onClick={() => reset()}>Retry</Button>
+        <Button variant={"secondary"} onClick={() => router.refresh()}>
           Refresh Page
         </Button>
       </div>

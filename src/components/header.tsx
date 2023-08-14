@@ -6,7 +6,7 @@ import { ClientHeader } from "./client-header";
 
 export const Header: React.FC = () => {
   return (
-    <header className="border-b-2 p-2">
+    <header className="sticky top-0 border-b-2 p-2 z-30 bg-background/80 backdrop-blur-lg">
       <div className="container flex items-center justify-between gap-8">
         <div>
           <Link

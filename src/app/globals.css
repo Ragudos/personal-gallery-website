@@ -79,6 +79,10 @@
     @apply px-4 md:px-8 !important;
   }
 
+  
+  .react-share {
+    @apply font-semibold inline-flex bg-transparent hover:bg-accent hover:text-foreground p-1 text-base !important;
+  }
 }
 
 dialog::backdrop {

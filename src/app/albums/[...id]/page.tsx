@@ -2,16 +2,15 @@ import * as React from "react";
 import { UploadButton } from "./(components)/upload-button";
 import dynamic from "next/dynamic";
 
-const GalleryImages = dynamic(() => import("./(components)/gallery-images").then((module) => {
-  return module.GalleryImages;
-}));
+const GalleryImages = dynamic(() =>
+  import("./(components)/gallery-images").then((module) => {
+    return module.GalleryImages;
+  }),
+);
 
-const GalleryPage: React.FC<{ params: { id: string[]; } }> = ({
-  params: {
-    id
-  }
+const GalleryPage: React.FC<{ params: { id: string[] } }> = ({
+  params: { id },
 }) => {
-  
   const folderPath = id.join("/");
 
   return (

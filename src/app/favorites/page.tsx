@@ -1,12 +1,13 @@
 import * as React from "react";
 import dynamic from "next/dynamic";
 
-const ImageSection = dynamic(() => import("./(components)/img-section").then((module) => {
-  return module.ImageSection;
-}));
+const ImageSection = dynamic(() =>
+  import("./(components)/img-section").then((module) => {
+    return module.ImageSection;
+  }),
+);
 
 const FavoritesPage: React.FC = () => {
-
   return (
     <section className="lg:px-8 w-full">
       <div className="flex justify-between gap-4 items-center w-full">

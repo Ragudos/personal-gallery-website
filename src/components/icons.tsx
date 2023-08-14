@@ -5,7 +5,6 @@ export const AdjustmentsIcon: React.FC<
 > = ({ ...props }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -28,7 +27,6 @@ export const DownloadIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -51,7 +49,6 @@ export const DeletedIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -74,7 +71,6 @@ export const DeleteIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -97,7 +93,6 @@ export const RefreshIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -142,7 +137,6 @@ export const LinkIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -165,7 +159,6 @@ export const EnterFullScreenIcon: React.FC<
 > = ({ ...props }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -188,7 +181,6 @@ export const ExitFullScreenIcon: React.FC<
 > = ({ ...props }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -211,7 +203,6 @@ export const ArrowUpIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -234,7 +225,6 @@ export const ArrowRightIcon: React.FC<
 > = ({ ...props }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -257,7 +247,6 @@ export const ArrowLeftIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -280,7 +269,6 @@ export const ArrowDownIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -303,7 +291,6 @@ export const ChevronDoubleUp: React.FC<
 > = ({ ...props }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -326,7 +313,6 @@ export const ChevronUp: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -349,7 +335,6 @@ export const ChevronDoubleDown: React.FC<
 > = ({ ...props }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -372,7 +357,6 @@ export const ChevronDown: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -395,7 +379,6 @@ export const HomeIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -418,7 +401,6 @@ export const MoonIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -441,7 +423,6 @@ export const SunIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -464,7 +445,6 @@ export const HeartIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -487,7 +467,6 @@ export const GalleryIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -510,7 +489,6 @@ export const ArrowRightCircle: React.FC<
 > = ({ ...props }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -533,7 +511,6 @@ export const ArrowLeftCircle: React.FC<
 > = ({ ...props }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -556,7 +533,6 @@ export const AlbumIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
 }) => {
   return (
     <svg
-
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -578,9 +554,25 @@ export const PlayIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
   ...props
 }) => {
   return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="w-6 h-6"
+      {...props}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z"
+      />
     </svg>
   );
 };
@@ -589,8 +581,42 @@ export const XIcon: React.FC<React.SVGAttributes<HTMLOrSVGElement>> = ({
   ...props
 }) => {
   return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="w-6 h-6"
+      {...props}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M6 18L18 6M6 6l12 12"
+      />
+    </svg>
+  );
+};
+
+export const EllipsisHorizontalCircle: React.FC<
+  React.SVGAttributes<HTMLOrSVGElement>
+> = ({ ...props }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="w-6 h-6"
+      {...props}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
     </svg>
   );
 };

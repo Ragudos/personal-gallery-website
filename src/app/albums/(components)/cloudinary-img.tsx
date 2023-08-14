@@ -25,7 +25,7 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
   loading = "lazy",
   fetchPriority = "auto",
   priority = false,
-  className
+  className,
 }) => {
   const [isLoading, setIsLoading] = React.useState(true);
   const didMount = useOnMount();
@@ -42,7 +42,7 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
         <Skeleton
           style={{
             height: `${parseFloat(height.toString()) * 0.25}px`,
-            width: `${parseFloat(width.toString()) * 0.25}px`
+            width: `${parseFloat(width.toString()) * 0.25}px`,
           }}
         />
       ) : (
@@ -56,7 +56,7 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
           priority={priority}
           className={cn(
             "z-0 rounded-lg shadow-md shadow-foreground/10",
-            className
+            className,
           )}
         />
       )}

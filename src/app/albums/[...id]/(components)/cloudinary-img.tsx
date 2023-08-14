@@ -29,7 +29,7 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
   loading = "lazy",
   fetchPriority = "auto",
   priority = false,
-  tags
+  tags,
 }) => {
   const [isLoading, setIsLoading] = React.useState(true);
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
@@ -51,7 +51,7 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
         <Skeleton
           style={{
             height: `${parseFloat(height.toString()) * 0.25}px`,
-            width: `${parseFloat(width.toString()) * 0.25}px`
+            width: `${parseFloat(width.toString()) * 0.25}px`,
           }}
         />
       ) : (
@@ -59,7 +59,7 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
           className="relative"
           style={{
             maxHeight: `${height}px`,
-            maxWidth: `${width}px`
+            maxWidth: `${width}px`,
           }}
         >
           <div className="absolute top-1 right-1">
@@ -71,16 +71,23 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
               onClick={() => {
                 // for optimistic updates
                 if (!transition) {
-                  toast({
-                    title: `${isFavorite ? "Removing image as favorite" : "Setting image as favorite"}`
-                  }, publicId);
-                  setIsFavorite((prev) => (!prev));
+                  toast(
+                    {
+                      title: `${
+                        isFavorite
+                          ? "Removing image as favorite"
+                          : "Setting image as favorite"
+                      }`,
+                    },
+                    publicId,
+                  );
+                  setIsFavorite((prev) => !prev);
                   startTransition(async () => {
                     try {
                       await setAsFavorite(publicId, tags.includes("favorite"));
                       dismiss(publicId);
                       toast({
-                        title: "Success!"
+                        title: "Success!",
                       });
                     } catch (error) {
                       console.error(error);
@@ -90,7 +97,13 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
                 }
               }}
             >
-              <HeartIcon className={`group-hover:fill-red-500/80 group-hover:stroke-red-500/80${isFavorite ? " fill-red-500 stroke-red-500" : " stroke-red-700"} group-active:fill-red-500/60 group-active:stroke-red-500/60`} />
+              <HeartIcon
+                className={`group-hover:fill-red-500/80 group-hover:stroke-red-500/80${
+                  isFavorite
+                    ? " fill-red-500 stroke-red-500"
+                    : " stroke-red-700"
+                } group-active:fill-red-500/60 group-active:stroke-red-500/60`}
+              />
             </Button>
           </div>
           <CldImage

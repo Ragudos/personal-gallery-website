@@ -32,7 +32,7 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
   fetchPriority = "auto",
   priority = false,
   tags,
-  onUnHeart
+  onUnHeart,
 }) => {
   const [isLoading, setIsLoading] = React.useState(true);
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
@@ -54,7 +54,7 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
         <Skeleton
           style={{
             height: `${parseFloat(height.toString()) * 0.25}px`,
-            width: `${parseFloat(width.toString()) * 0.25}px`
+            width: `${parseFloat(width.toString()) * 0.25}px`,
           }}
         />
       ) : (
@@ -62,7 +62,7 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
           className="relative"
           style={{
             maxHeight: `${height}px`,
-            maxWidth: `${width}px`
+            maxWidth: `${width}px`,
           }}
         >
           <div className="absolute top-1 right-1">
@@ -74,7 +74,7 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
               onClick={() => {
                 // for optimistic updates
                 if (!transition) {
-                  setIsFavorite((prev) => (!prev));
+                  setIsFavorite((prev) => !prev);
                   onUnHeart(publicId);
                   startTransition(async () => {
                     try {
@@ -85,22 +85,26 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
                       if (error instanceof Error) {
                         toast({
                           title: "Something went wrong",
-                          description: error.message
+                          description: error.message,
                         });
                       } else if (typeof error === "string") {
                         toast({
                           title: "Something went wrong",
-                          description: error
+                          description: error,
                         });
                       }
-                      setIsFavorite((prev) => (!prev));
+                      setIsFavorite((prev) => !prev);
                     }
                     router.refresh();
                   });
                 }
               }}
             >
-              <HeartIcon className={`group-hover:fill-red-500/80 group-hover:stroke-red-500/80${isFavorite ? " fill-red-500 stroke-red-500" : ""} group-active:fill-red-500/60 group-active:stroke-red-500/60`} />
+              <HeartIcon
+                className={`group-hover:fill-red-500/80 group-hover:stroke-red-500/80${
+                  isFavorite ? " fill-red-500 stroke-red-500" : ""
+                } group-active:fill-red-500/60 group-active:stroke-red-500/60`}
+              />
             </Button>
           </div>
           <CldImage

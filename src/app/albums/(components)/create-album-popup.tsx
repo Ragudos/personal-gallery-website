@@ -34,30 +34,33 @@ export const CreateAlbumPopup: React.FC = () => {
     dialogRef.current?.close();
     router.push(pathname);
     toast({
-      title: `Adding ${name} to albums.`
+      title: `Adding ${name} to albums.`,
     });
     try {
       await addAlbum(formData);
       toast({
-        title: `The album ${name} has been added.`
+        title: `The album ${name} has been added.`,
       });
     } catch (error: unknown) {
       if (error instanceof Error) {
         toast({
           title: "Something went wrong",
-          description: error.message
+          description: error.message,
         });
       } else if (typeof error === "string") {
         toast({
           title: "Something went wrong",
-          description: error
+          description: error,
         });
       }
-    };
+    }
   };
 
   return (
-    <Dialog ref={dialogRef} className="rounded-lg shadow-foreground/80 shadow-2xl">
+    <Dialog
+      ref={dialogRef}
+      className="rounded-lg shadow-foreground/80 shadow-2xl"
+    >
       <div className="p-8 w-[clamp(10rem,calc(80vw+0.1rem),27.5rem)] min-h-[17.5rem] h-[20vmin] bg-card">
         <h6 className="text-4xl font-bold">Add an Album</h6>
         <p>Create a new album</p>
@@ -75,10 +78,7 @@ export const CreateAlbumPopup: React.FC = () => {
             ref={inputRef}
           />
           <div className="flex justify-end gap-4 items-center mt-4">
-            <Button
-              type="submit"
-              variant={"secondary"}
-            >
+            <Button type="submit" variant={"secondary"}>
               Add album
             </Button>
             <Button

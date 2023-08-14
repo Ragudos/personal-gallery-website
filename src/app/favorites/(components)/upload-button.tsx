@@ -13,7 +13,7 @@ import { toast } from "@/components/ui/use-toast";
 
 export const UploadButton: React.FC = () => {
   const router = useRouter();
-  
+
   const handleClose = React.useCallback(() => {
     router.refresh();
   }, [router]);
@@ -23,7 +23,7 @@ export const UploadButton: React.FC = () => {
       <CldUploadButton
         className="flex gap-1 items-center"
         options={{
-          folder: "cloudinary-gallery-project"
+          folder: "cloudinary-gallery-project",
         }}
         uploadPreset="lx9juehj"
         onUpload={() => handleClose()}
@@ -31,7 +31,7 @@ export const UploadButton: React.FC = () => {
         onError={(error: string) => {
           toast({
             title: "Something went wrong",
-            description: error
+            description: error,
           });
         }}
       >
