@@ -155,5 +155,8 @@ export const moveImage = async (
 export const deleteAlbum = async (folderPath: string) => {
   await cloudinary.api.delete_folder(folderPath);
 
-  revalidatePath("/albums");
+  (function() {
+    revalidatePath("/albums");
+    revalidatePath("/albums/:path*");
+  })();
 };

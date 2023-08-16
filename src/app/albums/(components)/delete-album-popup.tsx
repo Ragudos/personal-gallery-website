@@ -57,6 +57,10 @@ const DeleteAlbumPopup: React.FC<{ folders: Folders[] }> = ({ folders }) => {
               title: "Something went wrong",
               description: error,
             });
+          } else {
+            toast({
+              title: "Something went wrong",
+            });
           }
           router.refresh();
         }

@@ -25,6 +25,10 @@ export const DeleteAlbumButton: React.FC<{ params: string }> = ({ params }) => {
           startTransition(async () => {
             try {
               await deleteAlbum(params);
+              toast({
+                title: "Deleted album",
+                description: "The album has been deleted.",
+              });
             } catch (error) {
               if (error instanceof Error) {
                 toast({
@@ -36,13 +40,12 @@ export const DeleteAlbumButton: React.FC<{ params: string }> = ({ params }) => {
                   title: "Something went wrong",
                   description: error,
                 });
+              } else {
+                toast({
+                  title: "Something went wrong",
+                });
               }
             }
-            toast({
-              title: "Deleted album",
-              description: "The album has been deleted.",
-            });
-
             router.refresh();
           });
         }
