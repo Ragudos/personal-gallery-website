@@ -77,6 +77,7 @@ export const setAsFavorite = async (publicId: string, isFavorite: boolean) => {
         (function () {
           revalidatePath("/gallery");
           revalidatePath("/favorites");
+          revalidatePath("/albums");
         })(),
       );
     }, 1000);
@@ -147,5 +148,12 @@ export const moveImage = async (
   (function() {
     revalidatePath("/albums");
     revalidatePath("/gallery");
+    revalidatePath("/favorites");
   })();
+};
+
+export const deleteAlbum = async (folderPath: string) => {
+  await cloudinary.api.delete_folder(folderPath);
+
+  revalidatePath("/albums");
 };

@@ -68,7 +68,7 @@ export const ImageOptions: React.FC<ImageOptionsProps> = ({
       </PopoverTrigger>
       <PopoverContent className="z-20 relative">
         <div className="m-2 flex flex-col gap-2 p-4 shadow-md shadow-background/50 min-w-[14rem] min-h-[7rem] rounded-lg bg-foreground text-background">
-          <p className="font-medium px-2">Move, Favorite, & Delete</p>
+          <p className="font-medium px-2">Favorite, Move, & Delete</p>
           <div className="flex flex-col gap-2">
             <Button
               aria-label={

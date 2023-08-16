@@ -1,66 +1,69 @@
 "use client";
 
 import * as React from "react";
-import { Dialog } from "@/components/ui/dialog";
+
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
+import { Dialog } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { addAlbum } from "@/app/actions/cloudinary";
 import { toast } from "@/components/ui/use-toast";
 
-const CreateAlbumPopup: React.FC = () => {
+import { deleteAlbum, type Folders } from "@/app/actions/cloudinary";
+
+const DeleteAlbumPopup: React.FC<{ folders: Folders[] }> = ({
+  folders,
+}) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-
   const [transition, startTransition] = React.useTransition();
 
+  const shouldShowModal = searchParams.get("deleteAlbum");
+
   const dialogRef = React.useRef<HTMLDialogElement>(null);
-  const inputRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
-    if (!dialogRef.current || !inputRef.current) return;
+    if (!dialogRef.current) return;
     const el = dialogRef.current;
-    const el2 = inputRef.current;
-    el2.focus();
-    if (searchParams.get("showModal") === "true") {
+    if (shouldShowModal === "true") {
       el.showModal();
     }
-  }, [searchParams, dialogRef, pathname, router]);
+  }, [shouldShowModal, dialogRef, pathname, router]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
-    const name = formData.get("album-name");
+    const path = formData.get("album-name-select-delete") as string;
+    const name = path.split("/").at(-1);
     dialogRef.current?.close();
     router.push(pathname);
+    toast({
+      title: `Deleting the album ${name}.`,
+    });
     if (!transition) {
       startTransition(async () => {
-        toast({
-          title: `Adding ${name} to albums.`,
-        });
         try {
-          await addAlbum(formData);
+          await deleteAlbum(path);
           toast({
-            title: `The album ${name} has been added.`,
+            title: `The album ${name} has been deleted.`,
           });
-        } catch (error: unknown) {
+        } catch (error) {
           if (error instanceof Error) {
             toast({
               title: "Something went wrong",
-              description: error.message,
+              description: error.message
             });
           } else if (typeof error === "string") {
             toast({
               title: "Something went wrong",
-              description: error,
+              description: error
             });
           }
-        }
-        router.refresh();
+          router.refresh();
+        };
       });
-    }
+    };
   };
 
   return (
@@ -69,24 +72,28 @@ const CreateAlbumPopup: React.FC = () => {
       className="rounded-lg shadow-foreground/80 shadow-2xl"
     >
       <div className="p-8 w-[clamp(10rem,calc(80vw+0.1rem),27.5rem)] min-h-[17.5rem] h-[20vmin] bg-card">
-        <h6 className="text-4xl font-bold">Add an Album</h6>
-        <p>Create a new album</p>
+        <h6 className="text-4xl font-bold">Delete Album</h6>
+        <p>Choose an album to delete</p>
         <form className="py-6" onSubmit={handleSubmit}>
-          <Label htmlFor="album-name">Album name</Label>
-          <Input
-            type="text"
-            name="album-name"
-            id="album-name"
-            placeholder="My awesome collection of images 😎"
-            className="w-full"
-            minLength={3}
-            pattern="[A-Za-z0-9]{3,}"
-            required
-            ref={inputRef}
-          />
+          <Label htmlFor="album-name-select-delete">Select an album</Label>
+          <select
+            name="album-name-select-delete"
+            id="album-name-select-delete"
+            placeholder="There are currently no albums."
+            className=" w-full p-2 rounded-lg bg-background text-foreground border-[1px] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            {folders.length && folders.map((folder) => (
+              <option key={folder.path} value={folder.path}>
+                {folder.name}
+              </option>
+            ))}
+            {!folders.length && (
+              <option disabled selected>There is no album</option>
+            )}
+          </select>
           <div className="flex justify-end gap-4 items-center mt-4">
-            <Button type="submit" variant={"secondary"}>
-              Add album
+            <Button disabled={!(folders.length > 0)} type="submit" variant={"secondary"}>
+              Delete Album
             </Button>
             <Button
               onClick={() => {
@@ -104,4 +111,4 @@ const CreateAlbumPopup: React.FC = () => {
   );
 };
 
-export default CreateAlbumPopup;
+export default DeleteAlbumPopup;

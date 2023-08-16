@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { ClientSideMenu } from "./client-side-menu";
+import { SideMenuLinksContainer } from "./side-menu-links-container";
 
 export const SideMenu: React.FC = () => {
   return (
@@ -10,7 +10,7 @@ export const SideMenu: React.FC = () => {
           Browse
         </p>
         <ul className="flex flex-row flex-wrap lg:flex-col gap-2">
-          <ClientSideMenu />
+          <SideMenuLinksContainer />
         </ul>
       </nav>
     </aside>

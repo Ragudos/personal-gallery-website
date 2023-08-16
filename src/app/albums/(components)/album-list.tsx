@@ -2,6 +2,7 @@ import * as React from "react";
 
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 
 import { Folders, ImageKeys, getAlbums } from "@/app/actions/cloudinary";
 
@@ -9,6 +10,8 @@ import { AlbumIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 
 import { CloudinaryImage } from "./cloudinary-img";
+
+const DeleteAlbumPopup = dynamic(() => import("./delete-album-popup"));
 
 export const AlbumList: React.FC = async () => {
   const { folders, thumbnails } = (await getAlbums({
@@ -23,6 +26,9 @@ export const AlbumList: React.FC = async () => {
 
   return (
     <React.Fragment>
+      <React.Suspense>
+        <DeleteAlbumPopup folders={folders} />
+      </React.Suspense>
       {!folders?.length ? (
         <p className="w-full">You currently have no album. Create one?</p>
       ) : null}
