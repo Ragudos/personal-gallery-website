@@ -86,9 +86,9 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
             />
           </div>
           <Link
-            href={`${location.origin}/view-image/${encodeURI(secureUrl)}`}
-            title={`View this image at ${location.origin}/view-image/${encodeURI(secureUrl)}`}
-            aria-label={`View this image at ${location.origin}/view-image/${encodeURI(secureUrl)}`}
+            href={`${location.origin}/view-image/${encodeURI(publicId)}`}
+            title={`View this image at ${location.origin}/view-image/${encodeURI(publicId)}`}
+            aria-label={`View this image at ${location.origin}/view-image/${encodeURI(publicId)}`}
             className="block"
           >
             <CldImage
