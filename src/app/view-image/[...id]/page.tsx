@@ -12,11 +12,8 @@ const ImagePage: React.FC<{ params: { id: string[] } }> = async ({
       <div className="p-2">
         <CloudinaryImage
           publicId={image.public_id}
-          secureUrl={image.secure_url}
-          tags={image.tags}
           width={image.width}
           height={image.height}
-          onDelete={() => {}}
           alt={image.filename}
         />
       </div>

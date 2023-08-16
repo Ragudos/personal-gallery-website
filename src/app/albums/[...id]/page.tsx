@@ -16,9 +16,9 @@ const GalleryPage: React.FC<{ params: { id: string[] } }> = ({
 
   return (
     <section className="lg:px-8 w-full">
-      <div className="flex justify-between gap-4 items-center w-full">
+      <div className="flex flex-col lg:flex-row justify-between gap-4 lg:items-center w-full">
         <h1 className="text-4xl font-bold">{id[id.length - 1]}</h1>
-        <div className="flex flex-col lg:flex-row items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <DeleteAlbumButton params={folderPath} />
           <UploadButton folderPath={folderPath} />
         </div>
