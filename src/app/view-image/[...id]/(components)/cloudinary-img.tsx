@@ -1,13 +1,10 @@
 "use client";
 
 import * as React from "react";
-
-import { ImageOptions } from "@/components/img-options";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useOnMount } from "@/lib/hooks/use-on-mount";
 import { cn } from "@/lib/utils";
 import { CldImage } from "next-cloudinary";
-import { ShareImageOptions } from "@/components/share-img-options";
 
 type CloudinaryImageProps = {
   publicId: string;
@@ -17,10 +14,6 @@ type CloudinaryImageProps = {
   loading?: "eager" | "lazy";
   fetchPriority?: "low" | "high" | "auto";
   priority?: boolean;
-  tags: string[];
-  secureUrl: string;
-  // eslint-disable-next-line no-unused-vars
-  onDelete: (publicId: string) => void;
   containerClassName?: string;
 };
 
@@ -32,14 +25,10 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
   loading = "lazy",
   fetchPriority = "auto",
   priority = false,
-  tags,
-  secureUrl,
-  onDelete,
   containerClassName,
 }) => {
   const [isLoading, setIsLoading] = React.useState(true);
   const didMount = useOnMount();
-  const [isBeingDeleted, setIsBeingDeleted] = React.useState(false);
 
   React.useEffect(() => {
     if (didMount) {
@@ -58,32 +47,15 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
         />
       ) : (
         <div
-          className={cn(containerClassName, "relative", {
-            "opacity-70 pointer-events-none": isBeingDeleted,
-          })}
+          className={cn(
+            "relative",
+            containerClassName
+          )}
           style={{
             maxHeight: `${height}px`,
             maxWidth: `${width}px`,
           }}
         >
-          <div className="absolute top-1 right-1 flex items-center gap-1">
-            <ShareImageOptions
-              imgPublicId={publicId}
-              imgSecureUrl={secureUrl}
-            />
-            <ImageOptions
-              imgPublicId={publicId}
-              isImageFavorite={tags.includes("favorite")}
-              isBeingDeleted={isBeingDeleted}
-              onStartDeletion={() => {
-                setIsBeingDeleted(true);
-              }}
-              onDelete={() => {
-                setIsBeingDeleted(false);
-                onDelete(publicId);
-              }}
-            />
-          </div>
           <CldImage
             src={publicId}
             alt={alt}
