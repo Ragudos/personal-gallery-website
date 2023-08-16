@@ -39,7 +39,6 @@ export const ImgSection: React.FC<ImageSectionProps> = ({ resources }) => {
               tags={img.tags}
               secureUrl={img.secure_url}
               onDelete={handleRemoveResources}
-              onUnheart={handleRemoveResources}
             />
           )}
         />

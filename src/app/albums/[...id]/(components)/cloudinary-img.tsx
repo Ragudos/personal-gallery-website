@@ -23,8 +23,6 @@ type CloudinaryImageProps = {
   // eslint-disable-next-line no-unused-vars
   onDelete: (publicId: string) => void;
   containerClassName?: string;
-  // eslint-disable-next-line no-unused-vars
-  onUnheart: (publicId: string) => void;
 };
 
 export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
@@ -39,7 +37,6 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
   secureUrl,
   onDelete,
   containerClassName,
-  onUnheart,
 }) => {
   const [isLoading, setIsLoading] = React.useState(true);
   const didMount = useOnMount();
@@ -86,7 +83,6 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
                 setIsBeingDeleted(false);
                 onDelete(publicId);
               }}
-              onUnheart={onUnheart}
             />
           </div>
           <Link
