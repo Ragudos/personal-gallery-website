@@ -5,7 +5,7 @@ import { CloudinaryImage } from "./(components)/cloudinary-img";
 const ImagePage: React.FC<{ params: { id: string[] } }> = async ({
   params: { id }
 }) => {
-  const image = (await getImages(undefined, id.join("/"), 1)).resources[0];
+  const image = (await getImages(undefined, `folder:${id.join("/")} AND resource_type:image`, 1)).resources[0];
 
   return (
     <React.Fragment>
