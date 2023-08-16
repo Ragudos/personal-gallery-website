@@ -11,9 +11,7 @@ import { toast } from "@/components/ui/use-toast";
 
 import { deleteAlbum, type Folders } from "@/app/actions/cloudinary";
 
-const DeleteAlbumPopup: React.FC<{ folders: Folders[] }> = ({
-  folders,
-}) => {
+const DeleteAlbumPopup: React.FC<{ folders: Folders[] }> = ({ folders }) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -52,18 +50,18 @@ const DeleteAlbumPopup: React.FC<{ folders: Folders[] }> = ({
           if (error instanceof Error) {
             toast({
               title: "Something went wrong",
-              description: error.message
+              description: error.message,
             });
           } else if (typeof error === "string") {
             toast({
               title: "Something went wrong",
-              description: error
+              description: error,
             });
           }
           router.refresh();
-        };
+        }
       });
-    };
+    }
   };
 
   return (
@@ -82,17 +80,24 @@ const DeleteAlbumPopup: React.FC<{ folders: Folders[] }> = ({
             placeholder="There are currently no albums."
             className=" w-full p-2 rounded-lg bg-background text-foreground border-[1px] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
-            {folders.length && folders.map((folder) => (
-              <option key={folder.path} value={folder.path}>
-                {folder.name}
-              </option>
-            ))}
+            {folders.length &&
+              folders.map((folder) => (
+                <option key={folder.path} value={folder.path}>
+                  {folder.name}
+                </option>
+              ))}
             {!folders.length && (
-              <option disabled selected>There is no album</option>
+              <option disabled selected>
+                There is no album
+              </option>
             )}
           </select>
           <div className="flex justify-end gap-4 items-center mt-4">
-            <Button disabled={!(folders.length > 0)} type="submit" variant={"secondary"}>
+            <Button
+              disabled={!(folders.length > 0)}
+              type="submit"
+              variant={"secondary"}
+            >
               Delete Album
             </Button>
             <Button

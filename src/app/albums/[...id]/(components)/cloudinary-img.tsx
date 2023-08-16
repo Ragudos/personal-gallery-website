@@ -8,6 +8,7 @@ import { useOnMount } from "@/lib/hooks/use-on-mount";
 import { cn } from "@/lib/utils";
 import { CldImage } from "next-cloudinary";
 import { ShareImageOptions } from "@/components/share-img-options";
+import Link from "next/link";
 
 type CloudinaryImageProps = {
   publicId: string;
@@ -38,7 +39,7 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
   secureUrl,
   onDelete,
   containerClassName,
-  onUnheart
+  onUnheart,
 }) => {
   const [isLoading, setIsLoading] = React.useState(true);
   const didMount = useOnMount();
@@ -60,14 +61,17 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
           }}
         />
       ) : (
-        <div
-          className={cn(containerClassName, "relative", {
+        <Link
+          className={cn(containerClassName, "block relative", {
             "opacity-70 pointer-events-none": isBeingDeleted,
           })}
           style={{
             maxHeight: `${height}px`,
             maxWidth: `${width}px`,
           }}
+          href={publicId}
+          title={`View this image at ${location.origin}/view-image/${publicId}`}
+          aria-label={`View this image at ${location.origin}/view-image/${publicId}`}
         >
           <div className="absolute top-1 right-1 flex items-center gap-1">
             <ShareImageOptions
@@ -98,7 +102,7 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
             priority={priority}
             className="z-0 rounded-lg shadow-md shadow-foreground/10"
           />
-        </div>
+        </Link>
       )}
     </React.Fragment>
   );

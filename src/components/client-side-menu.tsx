@@ -12,7 +12,7 @@ import { Folders } from "@/app/actions/cloudinary";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 export const ClientSideMenu: React.FC<{ folders: Folders[] }> = ({
-  folders
+  folders,
 }) => {
   const pathname = usePathname();
 
@@ -28,22 +28,24 @@ export const ClientSideMenu: React.FC<{ folders: Folders[] }> = ({
         if (link.name === "Albums") {
           return (
             <li key={link.id}>
-              <Popover open={toggle} onOpenChange={(state) => {
-                setToggle(state);
-                if (!state) {
-                  handleClose();
-                }
-              }}>
+              <Popover
+                open={toggle}
+                onOpenChange={(state) => {
+                  setToggle(state);
+                  if (!state) {
+                    handleClose();
+                  }
+                }}
+              >
                 <PopoverTrigger asChild>
                   <Button
                     variant={"ghost"}
-                    className={cn(
-                      "w-full gap-2 justify-start",
-                      { "bg-accent": pathname.startsWith(link.href) }
-                    )}
+                    className={cn("w-full gap-2 justify-start", {
+                      "bg-accent": pathname.startsWith(link.href),
+                    })}
                     aria-label={link.name}
                     title={link.name}
-                    onClick={() => setToggle((p) => (!p))}
+                    onClick={() => setToggle((p) => !p)}
                   >
                     <link.icon />
                     {link.name}
@@ -51,7 +53,13 @@ export const ClientSideMenu: React.FC<{ folders: Folders[] }> = ({
                 </PopoverTrigger>
                 <PopoverContent className="m-4" sideOffset={2}>
                   <div className="flex flex-col gap-[0.25rem]" role="list">
-                    <Button asChild variant={"ghost"} className={cn("w-full gap-2 justify-start", { "bg-accent": pathname === "/albums" })}>
+                    <Button
+                      asChild
+                      variant={"ghost"}
+                      className={cn("w-full gap-2 justify-start", {
+                        "bg-accent": pathname === "/albums",
+                      })}
+                    >
                       <Link
                         role="listitem"
                         href={"/albums"}
@@ -66,7 +74,13 @@ export const ClientSideMenu: React.FC<{ folders: Folders[] }> = ({
                       const href = `/albums/${folder.path}`;
                       return (
                         <React.Fragment key={folder.path + "side-menu-link"}>
-                          <Button asChild variant={"ghost"} className={cn("w-full gap-2 justify-start", { "bg-accent": pathname === href })}>
+                          <Button
+                            asChild
+                            variant={"ghost"}
+                            className={cn("w-full gap-2 justify-start", {
+                              "bg-accent": pathname === href,
+                            })}
+                          >
                             <Link
                               role="listitem"
                               href={href}
@@ -88,12 +102,14 @@ export const ClientSideMenu: React.FC<{ folders: Folders[] }> = ({
         } else {
           return (
             <li key={link.id}>
-              <Button asChild variant={"ghost"} className={cn("w-full gap-2 justify-start", { "bg-accent": pathname === link.href })}>
-                <Link
-                  href={link.href}
-                  aria-label={link.name}
-                  title={link.name}
-                >
+              <Button
+                asChild
+                variant={"ghost"}
+                className={cn("w-full gap-2 justify-start", {
+                  "bg-accent": pathname === link.href,
+                })}
+              >
+                <Link href={link.href} aria-label={link.name} title={link.name}>
                   <link.icon />
                   {link.name}
                 </Link>

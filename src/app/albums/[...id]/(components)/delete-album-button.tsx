@@ -9,9 +9,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 
-export const DeleteAlbumButton: React.FC<{ params: string; }> = ({
-  params
-}) => {
+export const DeleteAlbumButton: React.FC<{ params: string }> = ({ params }) => {
   const [transition, startTransition] = React.useTransition();
   const router = useRouter();
 
@@ -22,7 +20,7 @@ export const DeleteAlbumButton: React.FC<{ params: string; }> = ({
         if (!transition) {
           toast({
             title: "Deleting album...",
-            description: "The album is being deleted."
+            description: "The album is being deleted.",
           });
           startTransition(async () => {
             try {
@@ -31,18 +29,18 @@ export const DeleteAlbumButton: React.FC<{ params: string; }> = ({
               if (error instanceof Error) {
                 toast({
                   title: "Something went wrong",
-                  description: error.message
+                  description: error.message,
                 });
               } else if (typeof error === "string") {
                 toast({
                   title: "Something went wrong",
-                  description: error
+                  description: error,
                 });
               }
             }
             toast({
               title: "Deleted album",
-              description: "The album has been deleted."
+              description: "The album has been deleted.",
             });
             router.push("/albums");
           });

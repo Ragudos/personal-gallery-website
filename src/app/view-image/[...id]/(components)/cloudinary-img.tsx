@@ -8,7 +8,6 @@ import { useOnMount } from "@/lib/hooks/use-on-mount";
 import { cn } from "@/lib/utils";
 import { CldImage } from "next-cloudinary";
 import { ShareImageOptions } from "@/components/share-img-options";
-import Link from "next/link";
 
 type CloudinaryImageProps = {
   publicId: string;
@@ -23,8 +22,6 @@ type CloudinaryImageProps = {
   // eslint-disable-next-line no-unused-vars
   onDelete: (publicId: string) => void;
   containerClassName?: string;
-  // eslint-disable-next-line no-unused-vars
-  onUnheart: (resource: string) => void;
 };
 
 export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
@@ -39,7 +36,6 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
   secureUrl,
   onDelete,
   containerClassName,
-  onUnheart,
 }) => {
   const [isLoading, setIsLoading] = React.useState(true);
   const didMount = useOnMount();
@@ -61,17 +57,14 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
           }}
         />
       ) : (
-        <Link
-          className={cn(containerClassName, "block relative", {
+        <div
+          className={cn(containerClassName, "relative", {
             "opacity-70 pointer-events-none": isBeingDeleted,
           })}
           style={{
             maxHeight: `${height}px`,
             maxWidth: `${width}px`,
           }}
-          href={publicId}
-          title={`View this image at ${location.origin}/view-image/${publicId}`}
-          aria-label={`View this image at ${location.origin}/view-image/${publicId}`}
         >
           <div className="absolute top-1 right-1 flex items-center gap-1">
             <ShareImageOptions
@@ -89,7 +82,6 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
                 setIsBeingDeleted(false);
                 onDelete(publicId);
               }}
-              onUnheart={onUnheart}
             />
           </div>
           <CldImage
@@ -102,7 +94,7 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
             priority={priority}
             className="z-0 rounded-lg shadow-md shadow-foreground/10"
           />
-        </Link>
+        </div>
       )}
     </React.Fragment>
   );

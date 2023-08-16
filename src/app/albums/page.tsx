@@ -3,7 +3,9 @@ import dynamic from "next/dynamic";
 import { ToggleCreateAlbumPopup } from "./(components)/toggle-create-album-popup";
 import { DeleteAlbumButton } from "./(components)/delete-album-button";
 
-const CreateAlbumPopup = dynamic(() => import("./(components)/create-album-popup"));
+const CreateAlbumPopup = dynamic(
+  () => import("./(components)/create-album-popup"),
+);
 
 const AlbumList = dynamic(() =>
   import("./(components)/album-list").then((module) => {

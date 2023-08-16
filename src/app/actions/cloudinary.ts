@@ -145,7 +145,7 @@ export const moveImage = async (
       .split("/")
       .at(-1)}`,
   );
-  (function() {
+  (function () {
     revalidatePath("/albums");
     revalidatePath("/gallery");
     revalidatePath("/favorites");
