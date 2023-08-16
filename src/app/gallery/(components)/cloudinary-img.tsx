@@ -58,7 +58,7 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
           }}
         />
       ) : (
-        <Link
+        <div
           className={cn(containerClassName, "block relative", {
             "opacity-70 pointer-events-none": isBeingDeleted,
           })}
@@ -66,9 +66,6 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
             maxHeight: `${height}px`,
             maxWidth: `${width}px`,
           }}
-          href={`${location.origin}/view-image/${publicId}`}
-          title={`View this image at ${location.origin}/view-image/${publicId}`}
-          aria-label={`View this image at ${location.origin}/view-image/${publicId}`}
         >
           <div className="absolute top-1 right-1 flex items-center gap-1">
             <ShareImageOptions
@@ -88,17 +85,24 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
               }}
             />
           </div>
-          <CldImage
-            src={publicId}
-            alt={alt}
-            width={width}
-            height={height}
-            loading={loading}
-            fetchPriority={fetchPriority}
-            priority={priority}
-            className="z-0 rounded-lg shadow-md shadow-foreground/10"
-          />
-        </Link>
+          <Link
+            href={`${location.origin}/view-image/${publicId}`}
+            title={`View this image at ${location.origin}/view-image/${publicId}`}
+            aria-label={`View this image at ${location.origin}/view-image/${publicId}`}
+            className="block"
+          >
+            <CldImage
+              src={publicId}
+              alt={alt}
+              width={width}
+              height={height}
+              loading={loading}
+              fetchPriority={fetchPriority}
+              priority={priority}
+              className="z-0 rounded-lg shadow-md shadow-foreground/10"
+            />
+          </Link>
+        </div>
       )}
     </React.Fragment>
   );
