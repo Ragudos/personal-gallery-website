@@ -69,7 +69,7 @@ export const CloudinaryImage: React.FC<CloudinaryImageProps> = ({
             maxHeight: `${height}px`,
             maxWidth: `${width}px`,
           }}
-          href={publicId}
+          href={`${location.origin}/view-image/${publicId}`}
           title={`View this image at ${location.origin}/view-image/${publicId}`}
           aria-label={`View this image at ${location.origin}/view-image/${publicId}`}
         >
