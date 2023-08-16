@@ -42,7 +42,8 @@ export const DeleteAlbumButton: React.FC<{ params: string }> = ({ params }) => {
               title: "Deleted album",
               description: "The album has been deleted.",
             });
-            router.push("/albums");
+
+            router.refresh();
           });
         }
       }}

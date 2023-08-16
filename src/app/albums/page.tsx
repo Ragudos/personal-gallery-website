@@ -19,7 +19,7 @@ const AlbumPage: React.FC = () => {
       <section className="lg:px-8 w-full">
         <div className="flex justify-between gap-4 items-center w-full">
           <h1 className="text-4xl font-bold">Albums</h1>
-          <div className="flex gap-2 items-center">
+          <div className="flex flex-col lg:flex-row gap-2 items-center">
             <ToggleCreateAlbumPopup />
             <DeleteAlbumButton />
           </div>
