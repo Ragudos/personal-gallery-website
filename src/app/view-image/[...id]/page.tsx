@@ -9,7 +9,8 @@ const ImagePage: React.FC<{ params: { id: string[] } }> = async ({
 
   return (
     <React.Fragment>
-      <div className="p-2">
+      
+      <div className="p-2 flex flex-col justify-center lg:items-center lg:flex-row gap-6">
         <CloudinaryImage
           publicId={image.public_id}
           width={image.width}
