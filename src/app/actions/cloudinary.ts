@@ -179,7 +179,7 @@ export const deleteAlbum = async (folderPath: string, resources: ImageKeys[] = [
   // after moving it since we will have an empty folder on the
   // next iteration of this recursion.
   if (images.length === 1) {
-    await cloudinary.api.delete_folder(folderPath);
+    await deleteAlbum(folderPath, []);
   } else {
     await deleteAlbum(folderPath, images.slice(0, -1));
   }
