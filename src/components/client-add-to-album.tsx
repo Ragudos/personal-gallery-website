@@ -33,10 +33,10 @@ export const ClientAddToAlbumDialog: React.FC<{ folders: Folders[] }> = ({
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    const name = formData.get("album-name-select") as string;
     dialogRef.current?.close();
     router.push(pathname);
+    const formData = new FormData(e.target as HTMLFormElement);
+    const name = formData.get("album-name-select") as string;
     toast({
       title: `Moving image to ${name}.`,
     });
