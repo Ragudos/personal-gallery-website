@@ -10,8 +10,9 @@ export const BackButton: React.FC = () => {
 
   return (
     <Button
-      variant={"secondary"}
+      variant={"ghost"}
       size={"icon"}
+      className="ml-1"
       onClick={() => router.back()}
     >
       <ArrowLeftIcon className="w-5 h-5" />

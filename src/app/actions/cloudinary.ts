@@ -152,23 +152,23 @@ export const moveImage = async (
   })();
 };
 
-export const deleteAlbum = async (folderPath: string, resources: ImageKeys[] = []) => {
+export const deleteAlbum = async (folderPath: string, resources?: ImageKeys[]) => {
   // recursively delete assets in a folder since we cannot delete a folder that
   // is not empty.
   let images: ImageKeys[];
 
-  if (!resources.length) {
+  if (!resources) {
     images = (await getImages(undefined, `folder:${folderPath}`)).resources;
   } else {
     images = resources;
   }
 
-  if (!images.length && !resources.length) {
+  if (!images.length) {
     await cloudinary.api.delete_folder(folderPath);
     return;
   }
 
-  await moveImage(images[images.length - 1].public_id, folderPath, folderPath);
+  await moveImage(images[images.length - 1].public_id, "", "cloudinary-gallery-project");
 
   (function () {
     revalidatePath("/albums");
