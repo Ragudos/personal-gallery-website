@@ -184,3 +184,7 @@ export const deleteAlbum = async (folderPath: string, resources?: ImageKeys[]) =
     await deleteAlbum(folderPath, images.slice(0, -1));
   }
 };
+
+export const getImageData = async (imgId: string) => {
+  return await cloudinary.api.resource(imgId);
+};
