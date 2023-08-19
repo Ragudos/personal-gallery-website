@@ -84,7 +84,7 @@ export const ClientAddToAlbumDialog: React.FC<{ folders: Folders[] }> = ({
                   </option>
                 ))}
                 {!folders.length && (
-                  <option disabled value={""}>There are no albums</option>
+                  <option disabled value={""} selected>There are no albums</option>
                 )}
               </select>
               <div className="flex justify-end gap-4 items-center mt-4">
