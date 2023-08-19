@@ -78,14 +78,17 @@ export const ClientAddToAlbumDialog: React.FC<{ folders: Folders[] }> = ({
                 placeholder="There are currently no albums."
                 className=" w-full p-2 rounded-lg bg-background text-foreground border-[1px] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                {folders.map((folder) => (
+                {folders.length && folders.map((folder) => (
                   <option key={folder.path} value={folder.name}>
                     {folder.name}
                   </option>
                 ))}
+                {!folders.length && (
+                  <option disabled value={""}>There are no albums</option>
+                )}
               </select>
               <div className="flex justify-end gap-4 items-center mt-4">
-                <Button type="submit" variant={"secondary"}>
+                <Button type="submit" variant={"secondary"} disabled={folders.length < 1}>
                   Move image
                 </Button>
                 <Button
